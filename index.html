@@ -71,7 +71,10 @@
 
   <!-- Tools Grid -->
   <section class="container section-sm">
-    <h2 style="text-align: center; margin-bottom: var(--spacing-3xl);">Developer Tools</h2>
+    <div class="section-header">
+      <h2>Developer Tools</h2>
+      <p class="section-subtitle">Explore our collection of powerful, free tools designed for developers</p>
+    </div>
     
     <div class="tools-grid">
       <!-- 1. Base64 -->
@@ -177,36 +180,49 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
+  <footer class="footer-home">
+    <div class="footer-container">
       <div class="footer-content">
-        <div class="footer-section">
-          <h3>About JustHex</h3>
-          <p style="margin: 0;">A collection of free, essential developer tools built for speed and simplicity. No subscriptions, no nonsense.</p>
+        <div class="footer-column">
+          <h3>About</h3>
+          <ul>
+            <li><a href="#" title="About JustHex">About JustHex</a></li>
+            <li><a href="#" title="Features">Features</a></li>
+            <li><a href="#" title="Blog">Blog</a></li>
+            <li><a href="#" title="Changelog">Changelog</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-section">
+        <div class="footer-column">
           <h3>Tools</h3>
-          <div class="footer-links">
-            <a href="tools/base64.html">Base64 Encoder</a>
-            <a href="tools/sha256.html">SHA256 Hash</a>
-            <a href="tools/json.html">JSON Formatter</a>
-            <a href="tools/password.html">Password Generator</a>
-          </div>
+          <ul>
+            <li><a href="tools/base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
+            <li><a href="tools/json.html" title="JSON Formatter">JSON Formatter</a></li>
+            <li><a href="tools/password.html" title="Password Generator">Password Generator</a></li>
+            <li><a href="tools/uuid.html" title="UUID Generator">UUID Generator</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-section">
+        <div class="footer-column">
           <h3>Legal</h3>
-          <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact</a>
-          </div>
+          <ul>
+            <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" title="Terms of Service">Terms of Service</a></li>
+            <li><a href="sitemap.xml" title="Sitemap">Sitemap</a></li>
+            <li><a href="robots.txt" title="Robots.txt">Robots.txt</a></li>
+          </ul>
         </div>
       </div>
-      
+      <div class="footer-divider"></div>
       <div class="footer-bottom">
-        <p>&copy; 2024 JustHex. All tools are free and open source. No data is stored or transmitted.</p>
+        <div class="footer-credit">
+          <p>🌟 JustHex - Free Developer Tools</p>
+          <p>Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
+          <p>&copy; 2026 JustHex. All rights reserved. | Open Source</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">🐙</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter">𝕏</a>
+          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">💼</a>
+        </div>
       </div>
     </div>
   </footer>
