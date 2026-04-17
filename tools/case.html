@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Free Case Converter Online | Text Case Converter Tool</title>
+  <meta name="description" content="Fast and free case converter. Convert text to uppercase, lowercase, title case, camelCase, PascalCase, snake_case, and more. Perfect for formatting and text processing. No signup required.">
+  <meta name="keywords" content="case converter, uppercase, lowercase, text converter, camelcase, snakecase">
+  <meta name="author" content="JustHex">
+  
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">⚙️</span>
+          <span>JustHex</span>
+        </a>
+        
+        <div class="navbar-center">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
+          </div>
+        </div>
+        
+        <div class="navbar-right">
+          <button class="theme-toggle">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tool Header -->
+  <section class="container section-sm">
+    <div class="tool-page-header">
+      <h1>Case Converter</h1>
+      <p class="tool-description-text">
+        Convert text between multiple case formats instantly. 
+        Transform text to UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case, and more. 
+        Essential for coding, formatting content, adjusting naming conventions, and preparing text for different programming standards. 
+        Supports all text lengths and special characters.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool Container -->
+  <section class="container tool-container section-sm">
+    <!-- Input Section -->
+    <div class="tool-section">
+      <label class="tool-label">Text Input</label>
+      <textarea id="inputText" class="input-textarea" placeholder="Enter text to convert case..."></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="tool-controls" style="flex-wrap: wrap; justify-content: flex-start;">
+      <button class="btn-action btn-encode" style="flex: 0.8;" onclick="handleConvert('upper')">UPPERCASE</button>
+      <button class="btn-action btn-encode" style="flex: 0.8;" onclick="handleConvert('lower')">lowercase</button>
+      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('title')">Title Case</button>
+      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('camel')">camelCase</button>
+      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('pascal')">PascalCase</button>
+      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('snake')">snake_case</button>
+      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('kebab')">kebab-case</button>
+    </div>
+
+    <!-- Copy & Clear -->
+    <div class="tool-controls" style="margin-top: var(--spacing-md);">
+      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
+      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
+    </div>
+
+    <!-- Output Section -->
+    <div class="tool-section" style="margin-top: var(--spacing-xl);">
+      <label class="tool-label">Converted Output</label>
+      <textarea id="outputText" class="output-textarea" placeholder="Converted text will appear here..." readonly></textarea>
+    </div>
+
+    <!-- Helper Tips -->
+    <div class="helper-text">
+      <div class="helper-title">💡 Case Format Guide</div>
+      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
+        <li><strong>UPPERCASE:</strong> ALL WORDS IN CAPITALS</li>
+        <li><strong>lowercase:</strong> all words in small letters</li>
+        <li><strong>Title Case:</strong> First Letter Of Each Word Capitalized</li>
+        <li><strong>camelCase:</strong> firstWordSmall, secondWordCapitalized</li>
+        <li><strong>PascalCase:</strong> EachWordCapitalizedIncludingFirst</li>
+        <li><strong>snake_case:</strong> words_separated_by_underscores</li>
+        <li><strong>kebab-case:</strong> words-separated-by-hyphens</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: var(--spacing-3xl);">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 JustHex. Case Converter - Fast and flexible.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/tools.js"></script>
+  <script>
+    function handleConvert(caseType) {
+      try {
+        const input = document.getElementById('inputText').value;
+        if (!input) {
+          showFeedback('Please enter text to convert', 'error');
+          return;
+        }
+        
+        let result;
+        switch(caseType) {
+          case 'upper':
+            result = toUpperCase(input);
+            break;
+          case 'lower':
+            result = toLowerCase(input);
+            break;
+          case 'title':
+            result = toTitleCase(input);
+            break;
+          case 'camel':
+            result = toCamelCase(input);
+            break;
+          case 'pascal':
+            result = toPascalCase(input);
+            break;
+          case 'snake':
+            result = toSnakeCase(input);
+            break;
+          case 'kebab':
+            result = toKebabCase(input);
+            break;
+          default:
+            result = input;
+        }
+        
+        document.getElementById('outputText').value = result;
+        showFeedback('Text converted!');
+      } catch (error) {
+        showFeedback(error.message, 'error');
+      }
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('outputText').value;
+      if (output) {
+        copyToClipboard(output);
+      } else {
+        showFeedback('Nothing to copy', 'error');
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+      showFeedback('Cleared!');
+    }
+  </script>
+</body>
+</html>

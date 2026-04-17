@@ -1,0 +1,45 @@
+# robots.txt - JustHex Developer Tools
+# Website: https://justhex.com
+# Last Updated: April 17, 2026
+
+# Allow all bots
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /tools/
+Allow: /css/
+Allow: /js/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Allow Google's mobile bot
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://justhex.com/sitemap.xml
+
+# Cache rules (optional)
+Request-rate: 1/1s
+
+# Comments
+# This robots.txt file allows search engines to crawl all public pages
+# while blocking known bad bots from crawling the website.

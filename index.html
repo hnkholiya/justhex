@@ -1,61 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JustHex - Encode Decode Tools</title>
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- SEO Meta Tags -->
+  <title>JustHex - Free Online Developer Tools | Base64, SHA256, JSON Formatter & More</title>
+  <meta name="description" content="JustHex provides free online developer tools including Base64 encoder/decoder, SHA256 generator, MD5 hash, JSON formatter, URL encoder, password generator, UUID, binary converter and timestamp converter. Fast, secure, and no signup required.">
+  <meta name="keywords" content="developer tools, base64 encoder, sha256 generator, md5 hash, json formatter, url encoder, password generator, uuid generator, timestamp converter, free online tools">
+  <meta name="author" content="JustHex">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="JustHex - Free Developer Tools Platform">
+  <meta property="og:description" content="100% free online developer tools. No login, no ads, no limits. Encode, decode, hash, format and convert instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://justhex.com">
+  
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand fw-bold" href="#">JustHex</a>
-
-  <div class="ms-auto d-flex align-items-center">
-    <input type="text" class="form-control me-2" placeholder="Search tools...">
-    <button id="themeToggle" class="btn btn-outline-dark">🌙</button>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="text-center py-5">
-  <h1 class="fw-bold">JustHex</h1>
-  <p>Encode, Decode & Hash Tools — Fast & Free</p>
-</section>
-
-<!-- Tools Grid -->
-<div class="container">
-  <div class="row g-4">
-
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h5>Base64 Encoder</h5>
-        <a href="tools/base64.html" class="btn btn-primary mt-2">Open</a>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">⚙️</span>
+          <span>JustHex</span>
+        </a>
+        
+        <div class="navbar-center">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="search-input" 
+              placeholder="Search tools..."
+              aria-label="Search developer tools"
+            >
+          </div>
+        </div>
+        
+        <div class="navbar-right">
+          <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
       </div>
     </div>
+  </nav>
 
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h5>SHA256 Generator</h5>
-        <a href="#" class="btn btn-primary mt-2">Open</a>
+  <!-- Hero Section -->
+  <section class="container section">
+    <div class="hero">
+      <h1>All-in-One Developer Tools</h1>
+      <p class="hero-subtitle">
+        Free online tools for encoding, decoding, hashing, and formatting. 
+        No login, no ads, lightning-fast performance.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">✓ 100% Free</span>
+        <span class="badge">✓ No Sign-up</span>
+        <span class="badge">✓ Open Source</span>
+        <span class="badge">✓ Fast & Secure</span>
       </div>
     </div>
+  </section>
 
-    <div class="col-md-4">
-      <div class="card p-3">
-        <h5>URL Encoder</h5>
-        <a href="#" class="btn btn-primary mt-2">Open</a>
+  <!-- Tools Grid -->
+  <section class="container section-sm">
+    <h2 style="text-align: center; margin-bottom: var(--spacing-3xl);">Developer Tools</h2>
+    
+    <div class="tools-grid">
+      <!-- 1. Base64 -->
+      <a href="tools/base64.html" class="tool-card">
+        <div class="tool-icon">📝</div>
+        <h3 class="tool-name">Base64 Encoder</h3>
+        <p class="tool-description">Encode and decode Base64 text instantly. Perfect for APIs, authentication tokens, and data transmission.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Encoding</span>
+        </div>
+      </a>
+
+      <!-- 2. SHA256 -->
+      <a href="tools/sha256.html" class="tool-card">
+        <div class="tool-icon">🔐</div>
+        <h3 class="tool-name">SHA256 Hash</h3>
+        <p class="tool-description">Generate SHA256 hashes for passwords, encryption, and data integrity verification. Industry-standard hashing.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Hashing</span>
+        </div>
+      </a>
+
+      <!-- 3. MD5 -->
+      <a href="tools/md5.html" class="tool-card">
+        <div class="tool-icon">🔑</div>
+        <h3 class="tool-name">MD5 Generator</h3>
+        <p class="tool-description">Create MD5 hashes for checksum validation and quick hashing needs. Fast and reliable.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Hashing</span>
+        </div>
+      </a>
+
+      <!-- 4. JSON -->
+      <a href="tools/json.html" class="tool-card">
+        <div class="tool-icon">{ }</div>
+        <h3 class="tool-name">JSON Formatter</h3>
+        <p class="tool-description">Format, beautify, and validate JSON data. Debug APIs and improve code readability instantly.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Formatting</span>
+        </div>
+      </a>
+
+      <!-- 5. URL -->
+      <a href="tools/url.html" class="tool-card">
+        <div class="tool-icon">🌐</div>
+        <h3 class="tool-name">URL Encoder</h3>
+        <p class="tool-description">Encode and decode URLs safely for web transmission. Handle special characters in parameters.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Encoding</span>
+        </div>
+      </a>
+
+      <!-- 6. Password -->
+      <a href="tools/password.html" class="tool-card">
+        <div class="tool-icon">🔒</div>
+        <h3 class="tool-name">Password Generator</h3>
+        <p class="tool-description">Generate strong, secure passwords instantly. Customizable length and character types.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Security</span>
+        </div>
+      </a>
+
+      <!-- 7. UUID -->
+      <a href="tools/uuid.html" class="tool-card">
+        <div class="tool-icon">🆔</div>
+        <h3 class="tool-name">UUID Generator</h3>
+        <p class="tool-description">Create unique UUIDs for databases, APIs, and applications. Instant generation of v4 UUIDs.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Generators</span>
+        </div>
+      </a>
+
+      <!-- 8. Binary -->
+      <a href="tools/binary.html" class="tool-card">
+        <div class="tool-icon">010</div>
+        <h3 class="tool-name">Binary Converter</h3>
+        <p class="tool-description">Convert text to binary and back. Perfect for learning binary systems and debugging encoding.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Conversion</span>
+        </div>
+      </a>
+
+      <!-- 9. Case -->
+      <a href="tools/case.html" class="tool-card">
+        <div class="tool-icon">Aa</div>
+        <h3 class="tool-name">Case Converter</h3>
+        <p class="tool-description">Convert text between uppercase, lowercase, title case, and more. Perfect for formatting content.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Formatting</span>
+        </div>
+      </a>
+
+      <!-- 10. Timestamp -->
+      <a href="tools/timestamp.html" class="tool-card">
+        <div class="tool-icon">⏰</div>
+        <h3 class="tool-name">Timestamp Converter</h3>
+        <p class="tool-description">Convert UNIX timestamps to readable dates. Convert dates to timestamps for development and debugging.</p>
+        <div class="tool-meta">
+          <span class="tool-category">Conversion</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About JustHex</h3>
+          <p style="margin: 0;">A collection of free, essential developer tools built for speed and simplicity. No subscriptions, no nonsense.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Tools</h3>
+          <div class="footer-links">
+            <a href="tools/base64.html">Base64 Encoder</a>
+            <a href="tools/sha256.html">SHA256 Hash</a>
+            <a href="tools/json.html">JSON Formatter</a>
+            <a href="tools/password.html">Password Generator</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 JustHex. All tools are free and open source. No data is stored or transmitted.</p>
       </div>
     </div>
+  </footer>
 
-  </div>
-</div>
-
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Homepage -->
+    <url>
+        <loc>https://justhex.com/</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Base64 Tool -->
+    <url>
+        <loc>https://justhex.com/tools/base64.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- SHA256 Tool -->
+    <url>
+        <loc>https://justhex.com/tools/sha256.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- MD5 Tool -->
+    <url>
+        <loc>https://justhex.com/tools/md5.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- JSON Tool -->
+    <url>
+        <loc>https://justhex.com/tools/json.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- URL Tool -->
+    <url>
+        <loc>https://justhex.com/tools/url.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Password Tool -->
+    <url>
+        <loc>https://justhex.com/tools/password.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- UUID Tool -->
+    <url>
+        <loc>https://justhex.com/tools/uuid.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Binary Tool -->
+    <url>
+        <loc>https://justhex.com/tools/binary.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Case Tool -->
+    <url>
+        <loc>https://justhex.com/tools/case.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Timestamp Tool -->
+    <url>
+        <loc>https://justhex.com/tools/timestamp.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

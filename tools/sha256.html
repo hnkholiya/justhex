@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Free Base64 Encoder & Decoder Online | Encode/Decode Text & Data</title>
-  <meta name="description" content="Fast and free Base64 encoder and decoder. Encode text to Base64 and decode Base64 strings instantly. Perfect for APIs, authentication tokens, and data transmission. No signup required.">
-  <meta name="keywords" content="base64 encoder, base64 decoder, encode text, decode base64, free online tool">
+  <title>Free SHA256 Hash Generator Online | Generate Secure Hashes Instantly</title>
+  <meta name="description" content="Fast and free SHA256 hash generator. Generate secure SHA256 hashes instantly for passwords, data integrity, and encryption. Industry-standard hashing algorithm. No signup required.">
+  <meta name="keywords" content="sha256 generator, hash generator, sha256 online, secure hash, cryptographic hash">
   <meta name="author" content="JustHex">
   
   <link rel="stylesheet" href="../css/style.css">
@@ -28,13 +28,7 @@
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <input 
-              type="text" 
-              id="searchInput" 
-              class="search-input" 
-              placeholder="Search tools..."
-              aria-label="Search developer tools"
-            >
+            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
           </div>
         </div>
         
@@ -48,12 +42,12 @@
   <!-- Tool Header -->
   <section class="container section-sm">
     <div class="tool-page-header">
-      <h1>Base64 Encoder & Decoder</h1>
+      <h1>SHA256 Hash Generator</h1>
       <p class="tool-description-text">
-        Instantly encode text to Base64 format or decode Base64 strings back to plain text. 
-        Base64 encoding converts binary data into a text format that can be safely transmitted over text-based systems. 
-        Perfect for APIs, authentication tokens, data URLs, and secure data transmission. 
-        No login required, instant processing, completely free.
+        Generate secure SHA256 hashes instantly for any input text. 
+        SHA256 is a cryptographic hashing algorithm that produces a 256-bit hash value. 
+        Perfect for password storage, data integrity verification, blockchain applications, and security-critical systems. 
+        The hash is irreversible and deterministic - same input always produces same hash.
       </p>
     </div>
   </section>
@@ -62,29 +56,28 @@
   <section class="container tool-container section-sm">
     <!-- Input Section -->
     <div class="tool-section">
-      <label class="tool-label">Plain Text / Input</label>
+      <label class="tool-label">Text to Hash</label>
       <textarea 
         id="inputText" 
         class="input-textarea" 
-        placeholder="Paste text here or enter your content...">
+        placeholder="Enter text to generate SHA256 hash...">
       </textarea>
     </div>
 
     <!-- Buttons -->
     <div class="tool-controls">
-      <button class="btn-action btn-encode" onclick="handleEncodeBase64()">📤 Encode to Base64</button>
-      <button class="btn-action btn-decode" onclick="handleDecodeBase64()">📥 Decode from Base64</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
+      <button class="btn-action btn-generate" onclick="handleGenerateSHA256()">🔐 Generate SHA256</button>
+      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Hash</button>
       <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
     </div>
 
     <!-- Output Section -->
     <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Encoded / Decoded Output</label>
+      <label class="tool-label">SHA256 Hash Output</label>
       <textarea 
         id="outputText" 
         class="output-textarea" 
-        placeholder="Result will appear here..."
+        placeholder="Your SHA256 hash will appear here..."
         readonly
       ></textarea>
     </div>
@@ -93,11 +86,11 @@
     <div class="helper-text">
       <div class="helper-title">💡 Quick Tips</div>
       <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>Base64 encoding increases data size by approximately 33%</li>
-        <li>Use encoding for safely transmitting binary data over text-based protocols</li>
-        <li>Common in email attachments, data URLs, and API authentication</li>
-        <li>Encoding is reversible - always decode before processing</li>
-        <li>Works with any text content including special characters and emojis</li>
+        <li>SHA256 produces a 64-character hexadecimal string (256 bits)</li>
+        <li>Hashing is one-way - you cannot reverse a hash back to original text</li>
+        <li>Even small input changes produce completely different hashes</li>
+        <li>Widely used in blockchain, Git, and password storage systems</li>
+        <li>Always use hashing for sensitive data like passwords, never encryption</li>
       </ul>
     </div>
   </section>
@@ -106,7 +99,7 @@
   <footer class="footer" style="margin-top: var(--spacing-3xl);">
     <div class="container">
       <div class="footer-bottom">
-        <p>&copy; 2024 JustHex. Base64 Encoder & Decoder - Fast, free, and secure.</p>
+        <p>&copy; 2024 JustHex. SHA256 Hash Generator - Secure and fast.</p>
       </div>
     </div>
   </footer>
@@ -114,31 +107,16 @@
   <script src="../js/main.js"></script>
   <script src="../js/tools.js"></script>
   <script>
-    function handleEncodeBase64() {
+    async function handleGenerateSHA256() {
       try {
         const input = document.getElementById('inputText').value;
         if (!input) {
-          showFeedback('Please enter text to encode', 'error');
+          showFeedback('Please enter text to hash', 'error');
           return;
         }
-        const result = encodeBase64(input);
+        const result = await generateSHA256(input);
         document.getElementById('outputText').value = result;
-        showFeedback('Encoded successfully!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function handleDecodeBase64() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter Base64 text to decode', 'error');
-          return;
-        }
-        const result = decodeBase64(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('Decoded successfully!');
+        showFeedback('SHA256 hash generated!');
       } catch (error) {
         showFeedback(error.message, 'error');
       }
@@ -159,5 +137,21 @@
       showFeedback('Cleared!');
     }
   </script>
+</body>
+</html>
+
+<textarea id="input" class="form-control mb-3"></textarea>
+<button class="btn btn-primary" onclick="generate()">Generate</button>
+<textarea id="output" class="form-control mt-3"></textarea>
+
+<script>
+async function generate(){
+  const text = input.value;
+  const buf = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest("SHA-256", buf);
+  output.value = Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,"0")).join("");
+}
+</script>
+
 </body>
 </html>

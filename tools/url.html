@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Free Base64 Encoder & Decoder Online | Encode/Decode Text & Data</title>
-  <meta name="description" content="Fast and free Base64 encoder and decoder. Encode text to Base64 and decode Base64 strings instantly. Perfect for APIs, authentication tokens, and data transmission. No signup required.">
-  <meta name="keywords" content="base64 encoder, base64 decoder, encode text, decode base64, free online tool">
+  <title>Free URL Encoder & Decoder Online | Encode & Decode URLs Instantly</title>
+  <meta name="description" content="Fast and free URL encoder and decoder. Encode and decode URLs instantly for web transmission. Handle special characters safely in APIs and web applications. No signup required.">
+  <meta name="keywords" content="url encoder, url decoder, encode url, decode url, percent encoding">
   <meta name="author" content="JustHex">
   
   <link rel="stylesheet" href="../css/style.css">
@@ -28,18 +28,12 @@
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <input 
-              type="text" 
-              id="searchInput" 
-              class="search-input" 
-              placeholder="Search tools..."
-              aria-label="Search developer tools"
-            >
+            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
           </div>
         </div>
         
         <div class="navbar-right">
-          <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+          <button class="theme-toggle">🌙</button>
         </div>
       </div>
     </div>
@@ -48,12 +42,12 @@
   <!-- Tool Header -->
   <section class="container section-sm">
     <div class="tool-page-header">
-      <h1>Base64 Encoder & Decoder</h1>
+      <h1>URL Encoder & Decoder</h1>
       <p class="tool-description-text">
-        Instantly encode text to Base64 format or decode Base64 strings back to plain text. 
-        Base64 encoding converts binary data into a text format that can be safely transmitted over text-based systems. 
-        Perfect for APIs, authentication tokens, data URLs, and secure data transmission. 
-        No login required, instant processing, completely free.
+        Instantly encode URLs with special characters or decode percent-encoded URLs. 
+        URL encoding (also called percent-encoding) converts characters into a format that can be safely transmitted over the internet. 
+        Essential for query parameters, form data, and API calls containing special characters. 
+        Works with spaces, symbols, unicode characters, and more.
       </p>
     </div>
   </section>
@@ -62,18 +56,14 @@
   <section class="container tool-container section-sm">
     <!-- Input Section -->
     <div class="tool-section">
-      <label class="tool-label">Plain Text / Input</label>
-      <textarea 
-        id="inputText" 
-        class="input-textarea" 
-        placeholder="Paste text here or enter your content...">
-      </textarea>
+      <label class="tool-label">URL / Text Input</label>
+      <textarea id="inputText" class="input-textarea" placeholder="Enter URL or text to encode/decode..."></textarea>
     </div>
 
     <!-- Buttons -->
     <div class="tool-controls">
-      <button class="btn-action btn-encode" onclick="handleEncodeBase64()">📤 Encode to Base64</button>
-      <button class="btn-action btn-decode" onclick="handleDecodeBase64()">📥 Decode from Base64</button>
+      <button class="btn-action btn-encode" onclick="handleEncodeURL()">📤 Encode URL</button>
+      <button class="btn-action btn-decode" onclick="handleDecodeURL()">📥 Decode URL</button>
       <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
       <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
     </div>
@@ -81,23 +71,18 @@
     <!-- Output Section -->
     <div class="tool-section" style="margin-top: var(--spacing-xl);">
       <label class="tool-label">Encoded / Decoded Output</label>
-      <textarea 
-        id="outputText" 
-        class="output-textarea" 
-        placeholder="Result will appear here..."
-        readonly
-      ></textarea>
+      <textarea id="outputText" class="output-textarea" placeholder="Result will appear here..." readonly></textarea>
     </div>
 
     <!-- Helper Tips -->
     <div class="helper-text">
       <div class="helper-title">💡 Quick Tips</div>
       <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>Base64 encoding increases data size by approximately 33%</li>
-        <li>Use encoding for safely transmitting binary data over text-based protocols</li>
-        <li>Common in email attachments, data URLs, and API authentication</li>
-        <li>Encoding is reversible - always decode before processing</li>
-        <li>Works with any text content including special characters and emojis</li>
+        <li>Spaces become %20 in URL encoding</li>
+        <li>Special characters like &, =, ? must be encoded in query strings</li>
+        <li>Use for API parameters containing user input</li>
+        <li>Essential for HTML form submissions with special characters</li>
+        <li>Decoding reverses the encoding to retrieve original text</li>
       </ul>
     </div>
   </section>
@@ -106,7 +91,7 @@
   <footer class="footer" style="margin-top: var(--spacing-3xl);">
     <div class="container">
       <div class="footer-bottom">
-        <p>&copy; 2024 JustHex. Base64 Encoder & Decoder - Fast, free, and secure.</p>
+        <p>&copy; 2024 JustHex. URL Encoder & Decoder - Fast and reliable.</p>
       </div>
     </div>
   </footer>
@@ -114,31 +99,31 @@
   <script src="../js/main.js"></script>
   <script src="../js/tools.js"></script>
   <script>
-    function handleEncodeBase64() {
+    function handleEncodeURL() {
       try {
         const input = document.getElementById('inputText').value;
         if (!input) {
-          showFeedback('Please enter text to encode', 'error');
+          showFeedback('Please enter URL to encode', 'error');
           return;
         }
-        const result = encodeBase64(input);
+        const result = encodeURL(input);
         document.getElementById('outputText').value = result;
-        showFeedback('Encoded successfully!');
+        showFeedback('URL encoded successfully!');
       } catch (error) {
         showFeedback(error.message, 'error');
       }
     }
 
-    function handleDecodeBase64() {
+    function handleDecodeURL() {
       try {
         const input = document.getElementById('inputText').value;
         if (!input) {
-          showFeedback('Please enter Base64 text to decode', 'error');
+          showFeedback('Please enter URL to decode', 'error');
           return;
         }
-        const result = decodeBase64(input);
+        const result = decodeURL(input);
         document.getElementById('outputText').value = result;
-        showFeedback('Decoded successfully!');
+        showFeedback('URL decoded successfully!');
       } catch (error) {
         showFeedback(error.message, 'error');
       }

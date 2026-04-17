@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Free UUID Generator Online | Generate Unique UUIDs Instantly</title>
+  <meta name="description" content="Fast and free UUID v4 generator. Generate unique identifiers instantly for databases, APIs, and applications. No signup required. Supports bulk generation.">
+  <meta name="keywords" content="uuid generator, uuid v4, guid generator, unique identifier, random id">
+  <meta name="author" content="JustHex">
+  
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">⚙️</span>
+          <span>JustHex</span>
+        </a>
+        
+        <div class="navbar-center">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
+          </div>
+        </div>
+        
+        <div class="navbar-right">
+          <button class="theme-toggle">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tool Header -->
+  <section class="container section-sm">
+    <div class="tool-page-header">
+      <h1>UUID Generator</h1>
+      <p class="tool-description-text">
+        Generate unique UUIDs (Universally Unique Identifiers) instantly. 
+        UUID v4 creates random unique identifiers perfect for databases, APIs, applications, and distributed systems. 
+        Each UUID is globally unique with an extremely low probability of collision. 
+        Essential for generating unique database IDs, session tokens, and tracking identifiers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool Container -->
+  <section class="container tool-container section-sm">
+    <!-- Settings Section -->
+    <div class="tool-section">
+      <label class="tool-label">Generate Options</label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
+        <div>
+          <label style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Quantity</label>
+          <input type="number" id="uuidCount" min="1" max="100" value="1" class="input-textarea" style="min-height: auto; padding: var(--spacing-md);">
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="tool-controls">
+      <button class="btn-action btn-generate" onclick="handleGenerateUUID()">🆔 Generate UUID</button>
+      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy All</button>
+      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear</button>
+    </div>
+
+    <!-- Output Section -->
+    <div class="tool-section" style="margin-top: var(--spacing-xl);">
+      <label class="tool-label">Generated UUIDs</label>
+      <textarea id="outputText" class="output-textarea" placeholder="Your UUIDs will appear here..." readonly></textarea>
+    </div>
+
+    <!-- Helper Tips -->
+    <div class="helper-text">
+      <div class="helper-title">💡 UUID Quick Facts</div>
+      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
+        <li>UUID (Universally Unique Identifier) - 128-bit standard format</li>
+        <li>UUID v4 uses random numbers - cryptographically strong</li>
+        <li>Format: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx (36 characters)</li>
+        <li>Probability of collision is virtually zero</li>
+        <li>Perfect for database primary keys, API tokens, and distributed systems</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: var(--spacing-3xl);">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 JustHex. UUID Generator - Fast and reliable.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/tools.js"></script>
+  <script>
+    function handleGenerateUUID() {
+      try {
+        const count = parseInt(document.getElementById('uuidCount').value) || 1;
+        
+        if (count < 1 || count > 100) {
+          showFeedback('Can generate 1-100 UUIDs at a time', 'error');
+          return;
+        }
+        
+        let uuids = [];
+        for (let i = 0; i < count; i++) {
+          uuids.push(generateUUID());
+        }
+        
+        document.getElementById('outputText').value = uuids.join('\n');
+        showFeedback(`Generated ${count} UUID(s) successfully!`);
+      } catch (error) {
+        showFeedback(error.message, 'error');
+      }
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('outputText').value;
+      if (output) {
+        copyToClipboard(output);
+      } else {
+        showFeedback('Generate UUIDs first', 'error');
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('outputText').value = '';
+      showFeedback('Cleared!');
+    }
+  </script>
+</body>
+</html>

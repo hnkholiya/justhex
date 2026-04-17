@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Free MD5 Hash Generator Online | Generate MD5 Hashes Instantly</title>
+  <meta name="description" content="Fast and free MD5 hash generator. Generate MD5 hashes instantly for checksums, data integrity, and quick hashing. Simple, secure, and no signup required.">
+  <meta name="keywords" content="md5 generator, md5 hash, hash tool, checksum, online generator">
+  <meta name="author" content="JustHex">
+  
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">⚙️</span>
+          <span>JustHex</span>
+        </a>
+        
+        <div class="navbar-center">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
+          </div>
+        </div>
+        
+        <div class="navbar-right">
+          <button class="theme-toggle">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tool Header -->
+  <section class="container section-sm">
+    <div class="tool-page-header">
+      <h1>MD5 Hash Generator</h1>
+      <p class="tool-description-text">
+        Generate MD5 hashes instantly for any input text. 
+        MD5 is a widely-used cryptographic hash function that produces a 128-bit hash value, typically expressed as a 32-character hexadecimal number. 
+        Perfect for checksums, file integrity verification, and quick hashing needs. 
+        Note: MD5 is considered cryptographically broken and should not be used for further security purposes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool Container -->
+  <section class="container tool-container section-sm">
+    <!-- Input Section -->
+    <div class="tool-section">
+      <label class="tool-label">Text to Hash</label>
+      <textarea id="inputText" class="input-textarea" placeholder="Enter text to generate MD5 hash..."></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="tool-controls">
+      <button class="btn-action btn-generate" onclick="handleGenerateMD5()">🔑 Generate MD5</button>
+      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Hash</button>
+      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
+    </div>
+
+    <!-- Output Section -->
+    <div class="tool-section" style="margin-top: var(--spacing-xl);">
+      <label class="tool-label">MD5 Hash Output</label>
+      <textarea id="outputText" class="output-textarea" placeholder="Your MD5 hash will appear here..." readonly></textarea>
+    </div>
+
+    <!-- Helper Tips -->
+    <div class="helper-text">
+      <div class="helper-title">💡 Quick Tips</div>
+      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
+        <li>MD5 produces a 32-character hexadecimal string</li>
+        <li>Fast and simple hashing for non-security critical uses</li>
+        <li>Good for checksums and file integrity verification</li>
+        <li>Not recommended for cryptographic security purposes</li>
+        <li>Use SHA256 or SHA512 for security-critical applications</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: var(--spacing-3xl);">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 JustHex. MD5 Hash Generator - Fast and simple.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/tools.js"></script>
+  <script>
+    function handleGenerateMD5() {
+      try {
+        const input = document.getElementById('inputText').value;
+        if (!input) {
+          showFeedback('Please enter text to hash', 'error');
+          return;
+        }
+        const result = generateMD5(input);
+        document.getElementById('outputText').value = result;
+        showFeedback('MD5 hash generated!');
+      } catch (error) {
+        showFeedback(error.message, 'error');
+      }
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('outputText').value;
+      if (output) {
+        copyToClipboard(output);
+      } else {
+        showFeedback('Nothing to copy', 'error');
+      }
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+      showFeedback('Cleared!');
+    }
+  </script>
+</body>
+</html>
