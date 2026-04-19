@@ -1,189 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free JSON Formatter & Validator Online | Format & Beautify JSON</title>
-  <meta name="description" content="Fast and free JSON formatter and validator. Format, beautify, and validate JSON data instantly. Perfect for debugging APIs and improving code readability. No signup required.">
-  <meta name="keywords" content="json formatter, json validator, format json, beautify json, json tool">
+  <title>Free JSON Formatter & Validator Online | JustHex</title>
+  <meta name="description" content="Format, validate, and beautify JSON online. Minify, prettify, and validate JSON instantly. Perfect for debugging APIs and improving code readability.">
+  <meta name="keywords" content="json formatter, json validator, json beautifier, json minifier, free tool">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>JSON Formatter & Validator</h1>
-      <p class="tool-description-text">
-        Format, beautify, and validate JSON data instantly. 
-        This tool takes minified or poorly formatted JSON and transforms it into readable, well-indented code. 
-        Perfect for debugging API responses, working with configuration files, and improving code readability. 
-        Automatically validates JSON syntax and highlights errors.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Input Section -->
-    <div class="tool-section">
-      <label class="tool-label">JSON Input</label>
-      <textarea id="inputText" class="input-textarea" placeholder='Paste JSON here... e.g. {"name":"John","age":30}'></textarea>
-    </div>
-
-    <!-- Buttons -->
-    <div class="tool-controls">
-      <button class="btn-action btn-encode" onclick="handleFormatJSON()">✨ Format JSON</button>
-      <button class="btn-action btn-decode" onclick="handleMinifyJSON()">📦 Minify JSON</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Formatted Output</label>
-      <textarea id="outputText" class="output-textarea" placeholder="Formatted JSON will appear here..." readonly></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Quick Tips</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>Format beautifies JSON with 2-space indentation</li>
-        <li>Minify removes all whitespace to reduce file size</li>
-        <li>Invalid JSON will show an error message</li>
-        <li>Works with nested objects and arrays of any depth</li>
-        <li>Great for debugging API responses and configuration files</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-formatting">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>📝 Formatting Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./json.html" title="JSON Formatter"><strong>JSON Formatter</strong></a></li>
-            <li><a href="./case.html" title="Case Converter">Case Converter</a></li>
-          </ul>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">JSON Formatter & Validator</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Format, validate, minify, and beautify JSON instantly. Perfect for debugging APIs, validating data structures, and improving code readability. Supports formatting, validation, minification, and beautification of JSON data.</p>
+      </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📝 JSON Input</label>
+          <textarea id="inputText" placeholder="Paste JSON here..." class="w-full h-40 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500 font-mono text-sm"></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./sha256.html" title="SHA256 Hash">SHA256 Hash</a></li>
-            <li><a href="./password.html" title="Password Generator">Password Generator</a></li>
-            <li><a href="./timestamp.html" title="Timestamp Converter">Timestamp Converter</a></li>
-          </ul>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3">
+          <button onclick="handleFormat()" class="px-3 py-2 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">✨ Format</button>
+          <button onclick="handleMinify()" class="px-3 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📦 Minify</button>
+          <button onclick="handleValidate()" class="px-3 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">✓ Valid</button>
+          <button onclick="copyOutput()" class="px-3 py-2 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋 Copy</button>
+          <button onclick="clearAll()" class="px-3 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️ Clear</button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📤 Output</label>
+          <textarea id="outputText" placeholder="Formatted result..." readonly class="w-full h-40 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none placeholder-slate-400 dark:placeholder-slate-500 font-mono text-sm"></textarea>
+          <div id="validationResult" class="hidden p-3 rounded-lg text-sm font-medium"></div>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-cyan-50 dark:bg-cyan-900/20 border-l-4 border-cyan-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-cyan-900 dark:text-cyan-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-cyan-800 dark:text-cyan-300 text-sm">
+            <li>✓ Beautify makes JSON readable with proper indentation</li>
+            <li>✓ Minify removes whitespace to reduce file size</li>
+            <li>✓ Validate checks for syntax errors</li>
+            <li>✓ Copy formatted JSON for your projects</li>
+            <li>✓ All processing in your browser - 100% secure</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>🎯 Beautiful JSON Formatting</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔤 Encoding</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-cyan-500 transition">← Home</a></li><li><a href="./base64.html" class="hover:text-cyan-500 transition">Base64</a></li><li><a href="./url.html" class="hover:text-cyan-500 transition">URL</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-cyan-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-cyan-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="font-bold text-slate-900 dark:text-slate-50">JSON</a></li><li><a href="./password.html" class="hover:text-cyan-500 transition">Password</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-cyan-500 transition">Privacy</a></li><li><a href="/" class="hover:text-cyan-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-cyan-500 hover:text-cyan-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    function handleFormatJSON() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter JSON to format', 'error');
-          return;
-        }
-        const result = formatJSON(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('JSON formatted successfully!');
-      } catch (error) {
-        document.getElementById('outputText').value = error.message;
-        showFeedback('Invalid JSON format', 'error');
-      }
-    }
-
-    function handleMinifyJSON() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter JSON to minify', 'error');
-          return;
-        }
-        const result = minifyJSON(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('JSON minified successfully!');
-      } catch (error) {
-        document.getElementById('outputText').value = error.message;
-        showFeedback('Invalid JSON format', 'error');
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById('outputText').value;
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Nothing to copy', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('outputText').value = '';
-      showFeedback('Cleared!');
-    }
+    function handleFormat() { try { const input = document.getElementById('inputText').value; const parsed = JSON.parse(input); document.getElementById('outputText').value = JSON.stringify(parsed, null, 2); document.getElementById('validationResult').classList.add('hidden'); } catch(e) { showError('Invalid JSON: ' + e.message); } }
+    function handleMinify() { try { const input = document.getElementById('inputText').value; const parsed = JSON.parse(input); document.getElementById('outputText').value = JSON.stringify(parsed); document.getElementById('validationResult').classList.add('hidden'); } catch(e) { showError('Invalid JSON: ' + e.message); } }
+    function handleValidate() { try { const input = document.getElementById('inputText').value; JSON.parse(input); const res = document.getElementById('validationResult'); res.classList.remove('hidden'); res.className = 'p-3 rounded-lg text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200'; res.textContent = '✓ Valid JSON!'; } catch(e) { const res = document.getElementById('validationResult'); res.classList.remove('hidden'); res.className = 'p-3 rounded-lg text-sm font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'; res.textContent = '✗ Invalid: ' + e.message; } }
+    function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('Nothing to copy'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('inputText').value = ''; document.getElementById('outputText').value = ''; document.getElementById('validationResult').classList.add('hidden'); }
+    function showError(msg) { const res = document.getElementById('validationResult'); res.classList.remove('hidden'); res.className = 'p-3 rounded-lg text-sm font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'; res.textContent = msg; }
   </script>
-</body>
-</html>
-
 </body>
 </html>

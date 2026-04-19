@@ -1,270 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free UNIX Timestamp Converter Online | Convert Timestamps to Dates</title>
-  <meta name="description" content="Fast and free UNIX timestamp converter. Convert between UNIX timestamps and readable dates instantly. Supports seconds and milliseconds. Perfect for developers and debugging. No signup required.">
-  <meta name="keywords" content="timestamp converter, unix timestamp, timestamp to date, date to timestamp, epoch time">
+  <title>Free UNIX Timestamp Converter | JustHex</title>
+  <meta name="description" content="Convert UNIX timestamps to readable dates and back instantly. Perfect for development and debugging.">
+  <meta name="keywords" content="timestamp converter, unix timestamp, epoch time, date converter">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>UNIX Timestamp Converter</h1>
-      <p class="tool-description-text">
-        Convert between UNIX timestamps and human-readable dates instantly. 
-        UNIX timestamps (also called Epoch time) represent the number of seconds since January 1, 1970 UTC. 
-        Perfect for developers debugging logs, working with databases, and understanding time values in APIs and systems. 
-        Supports both seconds and milliseconds, and shows date in multiple formats.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Tab Navigation -->
-    <div style="display: flex; gap: var(--spacing-md); margin-bottom: var(--spacing-xl); border-bottom: 1px solid var(--color-border); flex-wrap: wrap;">
-      <button class="tab-btn active" onclick="switchTab('timestamp')" style="padding: var(--spacing-md) var(--spacing-lg); border: none; background: none; cursor: pointer; border-bottom: 3px solid var(--color-primary); color: var(--color-text); font-weight: 600;">Timestamp to Date</button>
-      <button class="tab-btn" onclick="switchTab('date')" style="padding: var(--spacing-md) var(--spacing-lg); border: none; background: none; cursor: pointer; border-bottom: 3px solid transparent; color: var(--color-text-secondary); font-weight: 600;">Date to Timestamp</button>
-    </div>
-
-    <!-- Timestamp to Date Tab -->
-    <div id="timestamp-tab" class="tab-content">
-      <div class="tool-section">
-        <label class="tool-label">UNIX Timestamp (seconds or milliseconds)</label>
-        <textarea id="timestampInput" class="input-textarea" placeholder="Enter UNIX timestamp... e.g., 1704067200"></textarea>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">UNIX Timestamp Converter</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Convert UNIX timestamps to readable dates and back instantly. Perfect for developers debugging timestamps, understanding epoch times, and converting between date formats.</p>
       </div>
-
-      <div class="tool-controls">
-        <button class="btn-action btn-convert" onclick="handleTimestampToDate()">🕐 Convert to Date</button>
-        <button class="btn-action btn-generate" onclick="getCurrentTime()">⏱️ Current Time</button>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
       </div>
-
-      <div class="tool-section" style="margin-top: var(--spacing-xl);">
-        <label class="tool-label">Readable Date Formats</label>
-        <textarea id="timestampOutput" class="output-textarea" placeholder="Date formats will appear here..." readonly></textarea>
-      </div>
-    </div>
-
-    <!-- Date to Timestamp Tab -->
-    <div id="date-tab" class="tab-content" style="display: none;">
-      <div class="tool-section">
-        <label class="tool-label">Date & Time Input</label>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
-          <div>
-            <label style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Date</label>
-            <input type="date" id="dateInput" class="input-textarea" style="min-height: auto; padding: var(--spacing-md);">
+      <div class="space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">🕐 UNIX Timestamp</label>
+            <input id="timestamp" type="number" placeholder="e.g., 1704067200" class="w-full p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition placeholder-slate-400 dark:placeholder-slate-500"/>
+            <button onclick="timestampToDate()" class="w-full px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-medium rounded-lg transition">Convert to Date</button>
           </div>
-          <div>
-            <label style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Time</label>
-            <input type="time" id="timeInput" class="input-textarea" style="min-height: auto; padding: var(--spacing-md);">
+          <div class="space-y-3">
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📅 Date & Time</label>
+            <input id="datetime" type="datetime-local" class="w-full p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition"/>
+            <button onclick="dateToTimestamp()" class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white font-medium rounded-lg transition">Convert to Timestamp</button>
           </div>
         </div>
-      </div>
-
-      <div class="tool-controls">
-        <button class="btn-action btn-convert" onclick="handleDateToTimestamp()">🕐 Convert to Timestamp</button>
-        <button class="btn-action btn-generate" onclick="setCurrentDateTime()">⏱️ Current Date/Time</button>
-      </div>
-
-      <div class="tool-section" style="margin-top: var(--spacing-xl);">
-        <label class="tool-label">UNIX Timestamp Output</label>
-        <textarea id="dateOutput" class="output-textarea" placeholder="UNIX timestamp will appear here..." readonly></textarea>
-      </div>
-    </div>
-
-    <!-- Copy & Clear for both tabs -->
-    <div class="tool-controls" style="margin-top: var(--spacing-lg);">
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Timestamp Quick Facts</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>UNIX Epoch starts at January 1, 1970 00:00:00 UTC</li>
-        <li>Seconds timestamp: Represents single second precision</li>
-        <li>Milliseconds timestamp: 1000x larger, used in JavaScript</li>
-        <li>Current UNIX time increases by 1 every second</li>
-        <li>Used in databases, logs, APIs, and system timestamps</li>
-        <li>Timezone independent - always represents UTC</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-conversion">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>⏰ Utility Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./timestamp.html" title="Timestamp Converter"><strong>Timestamp Converter</strong></a></li>
-            <li><a href="./binary.html" title="Binary Converter">Binary Converter</a></li>
-          </ul>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📤 Output</label>
+          <div id="outputText" class="w-full p-4 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 min-h-24 font-mono text-sm">Result will appear here...</div>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="./uuid.html" title="UUID Generator">UUID Generator</a></li>
-            <li><a href="./url.html" title="URL Encoder">URL Encoder</a></li>
-          </ul>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+          <button onclick="copyTimestamp()" class="px-3 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium text-sm rounded-lg transition">📋 Copy</button>
+          <button onclick="nowTimestamp()" class="px-3 py-2 bg-gradient-to-r from-violet-500 to-violet-600 hover:from-violet-600 hover:to-violet-700 text-white font-medium text-sm rounded-lg transition">⏰ Now</button>
+          <button onclick="clearAll()" class="px-3 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium text-sm rounded-lg transition">🗑️ Clear</button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-teal-900 dark:text-teal-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-teal-800 dark:text-teal-300 text-sm">
+            <li>✓ UNIX timestamp = seconds since Jan 1, 1970 UTC</li>
+            <li>✓ Also called Epoch time or POSIX time</li>
+            <li>✓ Always in UTC regardless of timezone</li>
+            <li>✓ Used in all programming languages</li>
+            <li>✓ Perfect for logging and debugging timestamps</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>⚡ Instant Timestamp Conversion</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔄 Conversion</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-teal-500 transition">← Home</a></li><li><a href="./timestamp.html" class="font-bold text-slate-900 dark:text-slate-50">Timestamp</a></li><li><a href="./case.html" class="hover:text-teal-500 transition">Case</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-teal-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-teal-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-teal-500 transition">JSON</a></li><li><a href="./base64.html" class="hover:text-teal-500 transition">Base64</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-teal-500 transition">Privacy</a></li><li><a href="/" class="hover:text-teal-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-teal-500 hover:text-teal-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    function switchTab(tab) {
-      // Hide all tabs
-      document.getElementById('timestamp-tab').style.display = 'none';
-      document.getElementById('date-tab').style.display = 'none';
-      
-      // Show selected tab
-      if (tab === 'timestamp') {
-        document.getElementById('timestamp-tab').style.display = 'block';
-      } else {
-        document.getElementById('date-tab').style.display = 'block';
-      }
-      
-      // Update button styles
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.style.borderBottomColor = 'transparent';
-        btn.style.color = 'var(--color-text-secondary)';
-      });
-      event.target.style.borderBottomColor = 'var(--color-primary)';
-      event.target.style.color = 'var(--color-text)';
-    }
-
-    function handleTimestampToDate() {
-      try {
-        const input = document.getElementById('timestampInput').value;
-        if (!input) {
-          showFeedback('Please enter a timestamp', 'error');
-          return;
-        }
-        const result = getFormattedDate(input);
-        const output = `ISO: ${result.iso}\nLocal: ${result.local}\nUTC: ${result.utc}\nReadable: ${result.readable}`;
-        document.getElementById('timestampOutput').value = output;
-        showFeedback('Timestamp converted!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function getCurrentTime() {
-      const ts = getCurrentTimestamp();
-      document.getElementById('timestampInput').value = ts;
-      handleTimestampToDate();
-    }
-
-    function handleDateToTimestamp() {
-      try {
-        const date = document.getElementById('dateInput').value;
-        const time = document.getElementById('timeInput').value;
-        
-        if (!date) {
-          showFeedback('Please select a date', 'error');
-          return;
-        }
-        
-        const dateStr = time ? `${date} ${time}` : `${date} 00:00:00`;
-        const result = dateToTimestamp(dateStr);
-        document.getElementById('dateOutput').value = result;
-        showFeedback('Date converted to timestamp!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function setCurrentDateTime() {
-      const now = new Date();
-      const date = now.toISOString().split('T')[0];
-      const time = now.toISOString().split('T')[1].slice(0, 5);
-      
-      document.getElementById('dateInput').value = date;
-      document.getElementById('timeInput').value = time;
-      handleDateToTimestamp();
-    }
-
-    function copyOutput() {
-      const timestampOutput = document.getElementById('timestampOutput').value;
-      const dateOutput = document.getElementById('dateOutput').value;
-      const output = timestampOutput || dateOutput;
-      
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Nothing to copy', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('timestampInput').value = '';
-      document.getElementById('timestampOutput').value = '';
-      document.getElementById('dateInput').value = '';
-      document.getElementById('timeInput').value = '';
-      document.getElementById('dateOutput').value = '';
-      showFeedback('Cleared!');
-    }
+    function timestampToDate() { const ts = parseInt(document.getElementById('timestamp').value); if (!ts) { alert('Enter timestamp'); return; } const date = new Date(ts * 1000); document.getElementById('outputText').textContent = date.toISOString(); document.getElementById('datetime').value = date.toISOString().slice(0, 16); }
+    function dateToTimestamp() { const dt = document.getElementById('datetime').value; if (!dt) { alert('Select date'); return; } const ts = Math.floor(new Date(dt).getTime() / 1000); document.getElementById('outputText').textContent = ts; document.getElementById('timestamp').value = ts; }
+    function nowTimestamp() { const ts = Math.floor(Date.now() / 1000); document.getElementById('timestamp').value = ts; document.getElementById('outputText').textContent = 'Current timestamp: ' + ts; timestampToDate(); }
+    function copyTimestamp() { const output = document.getElementById('outputText').textContent; if (!output) { alert('No output'); return; } navigator.clipboard.writeText(output).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('timestamp').value = ''; document.getElementById('datetime').value = ''; document.getElementById('outputText').textContent = 'Result will appear here...'; }
   </script>
 </body>
 </html>

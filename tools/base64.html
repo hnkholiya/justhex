@@ -1,153 +1,208 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free Base64 Encoder & Decoder Online | Encode/Decode Text & Data</title>
-  <meta name="description" content="Fast and free Base64 encoder and decoder. Encode text to Base64 and decode Base64 strings instantly. Perfect for APIs, authentication tokens, and data transmission. No signup required.">
+  <title>Free Base64 Encoder & Decoder Online | JustHex</title>
+  <meta name="description" content="Fast and free Base64 encoder/decoder online. Instantly encode text to Base64 or decode Base64 strings. Perfect for APIs, authentication tokens, and data transmission. No signup required.">
   <meta name="keywords" content="base64 encoder, base64 decoder, encode text, decode base64, free online tool">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Base64 Encoder & Decoder - JustHex">
+  <meta property="og:description" content="Free Base64 encoder and decoder online. Fast, secure, and no signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://justhex.netlify.app/tools/base64.html">
+  <meta name="canonical" content="https://justhex.netlify.app/tools/base64.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'selector',
+      theme: {
+        extend: {}
+      }
+    }
+  </script>
+  <style>
+    [data-theme="dark"] { color-scheme: dark; }
+    [data-theme="light"] { color-scheme: light; }
+  </style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input 
-              type="text" 
-              id="searchInput" 
-              class="search-input" 
-              placeholder="Search tools..."
-              aria-label="Search developer tools"
-            >
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-200">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl">
+        <span>⚙️</span>
+        <span>JustHex</span>
+      </a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
 
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>Base64 Encoder & Decoder</h1>
-      <p class="tool-description-text">
-        Instantly encode text to Base64 format or decode Base64 strings back to plain text. 
-        Base64 encoding converts binary data into a text format that can be safely transmitted over text-based systems. 
-        Perfect for APIs, authentication tokens, data URLs, and secure data transmission. 
-        No login required, instant processing, completely free.
-      </p>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Base64 Encoder & Decoder</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+          Instantly encode text to Base64 format or decode Base64 strings back to plain text. Base64 encoding converts binary data into a text format that can be safely transmitted over text-based systems. Perfect for APIs, authentication tokens, data URLs, and secure data transmission. No login required, instant processing, completely free.
+        </p>
+      </div>
 
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Input Section -->
-    <div class="tool-section">
-      <label class="tool-label">Plain Text / Input</label>
-      <textarea 
-        id="inputText" 
-        class="input-textarea" 
-        placeholder="Paste text here or enter your content...">
-      </textarea>
-    </div>
+      <!-- Ad Space 1 -->
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
 
-    <!-- Buttons -->
-    <div class="tool-controls">
-      <button class="btn-action btn-encode" onclick="handleEncodeBase64()">📤 Encode to Base64</button>
-      <button class="btn-action btn-decode" onclick="handleDecodeBase64()">📥 Decode from Base64</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Encoded / Decoded Output</label>
-      <textarea 
-        id="outputText" 
-        class="output-textarea" 
-        placeholder="Result will appear here..."
-        readonly
-      ></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Quick Tips</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>Base64 encoding increases data size by approximately 33%</li>
-        <li>Use encoding for safely transmitting binary data over text-based protocols</li>
-        <li>Common in email attachments, data URLs, and API authentication</li>
-        <li>Encoding is reversible - always decode before processing</li>
-        <li>Works with any text content including special characters and emojis</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-encoding">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>🔤 Encoding Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./base64.html" title="Base64 Encoder"><strong>Base64 Encoder</strong></a></li>
-            <li><a href="./url.html" title="URL Encoder">URL Encoder</a></li>
-          </ul>
+      <!-- Tool Section -->
+      <div class="space-y-8">
+        <!-- Input Section -->
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+            📝 Plain Text / Input
+          </label>
+          <textarea
+            id="inputText"
+            placeholder="Paste text here or enter your content..."
+            class="w-full h-32 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"
+          ></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./sha256.html" title="SHA256 Hash">SHA256 Hash</a></li>
-            <li><a href="./json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="./password.html" title="Password Generator">Password Generator</a></li>
-          </ul>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button onclick="handleEncodeBase64()" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+            📤 Encode
+          </button>
+          <button onclick="handleDecodeBase64()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+            📥 Decode
+          </button>
+          <button onclick="copyOutput()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+            📋 Copy
+          </button>
+          <button onclick="clearAll()" class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+            🗑️ Clear
+          </button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+
+        <!-- Output Section -->
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+            📤 Encoded / Decoded Output
+          </label>
+          <textarea
+            id="outputText"
+            placeholder="Result will appear here..."
+            readonly
+            class="w-full h-32 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:outline-none resize-none placeholder-slate-400 dark:placeholder-slate-500 cursor-text"
+          ></textarea>
+        </div>
+
+        <!-- Ad Space 2 -->
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+
+        <!-- Helper Section -->
+        <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-blue-900 dark:text-blue-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-blue-800 dark:text-blue-300 text-sm">
+            <li>✓ Base64 encoding increases data size by approximately 33%</li>
+            <li>✓ Use encoding for safely transmitting binary data over text-based protocols</li>
+            <li>✓ Common in email attachments, data URLs, and API authentication</li>
+            <li>✓ Encoding is reversible - always decode before processing</li>
+            <li>✓ Works with any text content including special characters and emojis</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>🔐 Secure Base64 Encoding/Decoding</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
+
+      <!-- Ad Space 3 -->
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="font-bold mb-4">🔤 Encoding</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="/" class="hover:text-purple-500 transition">← Back Home</a></li>
+            <li><a href="./base64.html" class="font-bold text-slate-900 dark:text-slate-50">Base64</a></li>
+            <li><a href="./url.html" class="hover:text-purple-500 transition">URL Encoder</a></li>
+          </ul>
         </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
+        <div>
+          <h3 class="font-bold mb-4">🔐 Hashing</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="./sha256.html" class="hover:text-purple-500 transition">SHA256</a></li>
+            <li><a href="./md5.html" class="hover:text-purple-500 transition">MD5</a></li>
+          </ul>
         </div>
+        <div>
+          <h3 class="font-bold mb-4">⚙️ Tools</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="./json.html" class="hover:text-purple-500 transition">JSON Formatter</a></li>
+            <li><a href="./password.html" class="hover:text-purple-500 transition">Password Gen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">📜 Legal</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="/" class="hover:text-purple-500 transition">Privacy Policy</a></li>
+            <li><a href="/" class="hover:text-purple-500 transition">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-purple-500 hover:text-purple-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    // Base64 specific functions
+    function handleEncodeBase64() {
+      const input = document.getElementById('inputText').value;
+      if (!input) { alert('Please enter text to encode'); return; }
+      try {
+        document.getElementById('outputText').value = btoa(unescape(encodeURIComponent(input)));
+      } catch(e) { alert('Error encoding: ' + e.message); }
+    }
+
+    function handleDecodeBase64() {
+      const input = document.getElementById('inputText').value;
+      if (!input) { alert('Please enter text to decode'); return; }
+      try {
+        document.getElementById('outputText').value = decodeURIComponent(escape(atob(input)));
+      } catch(e) { alert('Error decoding: ' + e.message); }
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('outputText');
+      if (!output.value) { alert('Nothing to copy'); return; }
+      navigator.clipboard.writeText(output.value).then(() => {
+        alert('Copied to clipboard!');
+      }).catch(() => { alert('Failed to copy'); });
+    }
+
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+    }
+  </script>
+</body>
+</html>
   <script src="../js/tools.js"></script>
   <script>
     function handleEncodeBase64() {

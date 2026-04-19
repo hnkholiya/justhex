@@ -1,193 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free SHA256 Hash Generator Online | Generate Secure Hashes Instantly</title>
-  <meta name="description" content="Fast and free SHA256 hash generator. Generate secure SHA256 hashes instantly for passwords, data integrity, and encryption. Industry-standard hashing algorithm. No signup required.">
-  <meta name="keywords" content="sha256 generator, hash generator, sha256 online, secure hash, cryptographic hash">
+  <title>Free SHA256 Hash Generator Online | JustHex</title>
+  <meta name="description" content="Fast and free SHA256 hash generator. Generate SHA256 hashes from text instantly. Industry-standard cryptographic hashing for passwords and data integrity. No signup required.">
+  <meta name="keywords" content="sha256 hash, sha256 generator, hash generator, cryptographic hash">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors"
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>SHA256 Hash Generator</h1>
-      <p class="tool-description-text">
-        Generate secure SHA256 hashes instantly for any input text. 
-        SHA256 is a cryptographic hashing algorithm that produces a 256-bit hash value. 
-        Perfect for password storage, data integrity verification, blockchain applications, and security-critical systems. 
-        The hash is irreversible and deterministic - same input always produces same hash.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Input Section -->
-    <div class="tool-section">
-      <label class="tool-label">Text to Hash</label>
-      <textarea 
-        id="inputText" 
-        class="input-textarea" 
-        placeholder="Enter text to generate SHA256 hash...">
-      </textarea>
-    </div>
-
-    <!-- Buttons -->
-    <div class="tool-controls">
-      <button class="btn-action btn-generate" onclick="handleGenerateSHA256()">🔐 Generate SHA256</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Hash</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">SHA256 Hash Output</label>
-      <textarea 
-        id="outputText" 
-        class="output-textarea" 
-        placeholder="Your SHA256 hash will appear here..."
-        readonly
-      ></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Quick Tips</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>SHA256 produces a 64-character hexadecimal string (256 bits)</li>
-        <li>Hashing is one-way - you cannot reverse a hash back to original text</li>
-        <li>Even small input changes produce completely different hashes</li>
-        <li>Widely used in blockchain, Git, and password storage systems</li>
-        <li>Always use hashing for sensitive data like passwords, never encryption</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-hashing">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>🔐 Hashing Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./sha256.html" title="SHA256 Hash"><strong>SHA256 Hash</strong></a></li>
-            <li><a href="./md5.html" title="MD5 Generator">MD5 Generator</a></li>
-          </ul>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">SHA256 Hash Generator</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Generate cryptographically secure SHA256 hashes from any text instantly. SHA256 is an industry-standard cryptographic hash function used for passwords, file integrity verification, blockchain applications, and data security. Perfect for developers and security professionals. No login required, instant processing, completely free.</p>
+      </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📝 Text to Hash</label>
+          <textarea id="inputText" placeholder="Enter text to generate SHA256 hash..." class="w-full h-32 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
-            <li><a href="./password.html" title="Password Generator">Password Generator</a></li>
-            <li><a href="./uuid.html" title="UUID Generator">UUID Generator</a></li>
-          </ul>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button onclick="handleGenerateSHA256()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">⚙️ Hash</button>
+          <button onclick="copyOutput()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋 Copy</button>
+          <button onclick="toggleCompare()" class="px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🔍 Compare</button>
+          <button onclick="clearAll()" class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️ Clear</button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">🔐 SHA256 Hash Output</label>
+          <textarea id="outputText" placeholder="Result will appear here..." readonly class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:outline-none resize-none placeholder-slate-400 dark:placeholder-slate-500 cursor-text font-mono text-sm"></textarea>
+        </div>
+        <div id="compareSection" class="hidden space-y-3 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">🔗 Compare With Hash</label>
+          <input id="compareHash" type="text" placeholder="Paste a hash to compare..." class="w-full p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 transition placeholder-slate-400 dark:placeholder-slate-500 font-mono text-sm"/>
+          <button onclick="compareHashes()" class="w-full px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-lg transition">✓ Check Match</button>
+          <div id="compareResult" class="hidden p-3 rounded-lg text-sm font-medium"></div>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-blue-900 dark:text-blue-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-blue-800 dark:text-blue-300 text-sm">
+            <li>✓ SHA256 generates a fixed 64-character hexadecimal string</li>
+            <li>✓ Same input always produces identical hash (deterministic)</li>
+            <li>✓ One-way function: cannot be reversed to get original text</li>
+            <li>✓ Industry-standard for passwords, blockchain, and file verification</li>
+            <li>✓ All processing happens in your browser - 100% secure</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>🛡️ Secure SHA256 Hashing</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-blue-500 transition">← Home</a></li><li><a href="./sha256.html" class="font-bold text-slate-900 dark:text-slate-50">SHA256</a></li><li><a href="./md5.html" class="hover:text-blue-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔤 Encoding</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./base64.html" class="hover:text-blue-500 transition">Base64</a></li><li><a href="./url.html" class="hover:text-blue-500 transition">URL</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-blue-500 transition">JSON</a></li><li><a href="./password.html" class="hover:text-blue-500 transition">Password</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-blue-500 transition">Privacy</a></li><li><a href="/" class="hover:text-blue-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    async function handleGenerateSHA256() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter text to hash', 'error');
-          return;
-        }
-        const result = await generateSHA256(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('SHA256 hash generated!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById('outputText').value;
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Nothing to copy', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('outputText').value = '';
-      showFeedback('Cleared!');
-    }
+    async function sha256(str) { const encoder = new TextEncoder(); const data = encoder.encode(str); const hashBuffer = await crypto.subtle.digest('SHA-256', data); const hashArray = Array.from(new Uint8Array(hashBuffer)); return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); }
+    function handleGenerateSHA256() { const input = document.getElementById('inputText').value; if (!input) { alert('Please enter text to hash'); return; } sha256(input).then(hash => { document.getElementById('outputText').value = hash; }).catch(e => { alert('Error: ' + e.message); }); }
+    function toggleCompare() { document.getElementById('compareSection').classList.toggle('hidden'); }
+    function compareHashes() { const generatedHash = document.getElementById('outputText').value.toLowerCase(); const compareHashValue = document.getElementById('compareHash').value.toLowerCase().trim(); const resultDiv = document.getElementById('compareResult'); if (!generatedHash || !compareHashValue) { alert('Please generate a hash and enter a hash to compare'); return; } resultDiv.classList.remove('hidden'); if (generatedHash === compareHashValue) { resultDiv.className = 'p-3 rounded-lg text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200'; resultDiv.textContent = '✓ Hashes Match!'; } else { resultDiv.className = 'p-3 rounded-lg text-sm font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'; resultDiv.textContent = '✗ Hashes Do Not Match'; } }
+    function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('Nothing to copy'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('inputText').value = ''; document.getElementById('outputText').value = ''; document.getElementById('compareHash').value = ''; document.getElementById('compareResult').classList.add('hidden'); }
   </script>
-</body>
-</html>
-
-<textarea id="input" class="form-control mb-3"></textarea>
-<button class="btn btn-primary" onclick="generate()">Generate</button>
-<textarea id="output" class="form-control mt-3"></textarea>
-
-<script>
-async function generate(){
-  const text = input.value;
-  const buf = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest("SHA-256", buf);
-  output.value = Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,"0")).join("");
-}
-</script>
-
 </body>
 </html>

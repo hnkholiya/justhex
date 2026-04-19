@@ -1,207 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free Case Converter Online | Text Case Converter Tool</title>
-  <meta name="description" content="Fast and free case converter. Convert text to uppercase, lowercase, title case, camelCase, PascalCase, snake_case, and more. Perfect for formatting and text processing. No signup required.">
-  <meta name="keywords" content="case converter, uppercase, lowercase, text converter, camelcase, snakecase">
+  <title>Free Text Case Converter | JustHex</title>
+  <meta name="description" content="Convert text between uppercase, lowercase, titlecase, and sentence case. Perfect for formatting content.">
+  <meta name="keywords" content="case converter, uppercase, lowercase, text converter">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>Case Converter</h1>
-      <p class="tool-description-text">
-        Convert text between multiple case formats instantly. 
-        Transform text to UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case, and more. 
-        Essential for coding, formatting content, adjusting naming conventions, and preparing text for different programming standards. 
-        Supports all text lengths and special characters.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Input Section -->
-    <div class="tool-section">
-      <label class="tool-label">Text Input</label>
-      <textarea id="inputText" class="input-textarea" placeholder="Enter text to convert case..."></textarea>
-    </div>
-
-    <!-- Buttons -->
-    <div class="tool-controls" style="flex-wrap: wrap; justify-content: flex-start;">
-      <button class="btn-action btn-encode" style="flex: 0.8;" onclick="handleConvert('upper')">UPPERCASE</button>
-      <button class="btn-action btn-encode" style="flex: 0.8;" onclick="handleConvert('lower')">lowercase</button>
-      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('title')">Title Case</button>
-      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('camel')">camelCase</button>
-      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('pascal')">PascalCase</button>
-      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('snake')">snake_case</button>
-      <button class="btn-action btn-encode" style="flex: 1;" onclick="handleConvert('kebab')">kebab-case</button>
-    </div>
-
-    <!-- Copy & Clear -->
-    <div class="tool-controls" style="margin-top: var(--spacing-md);">
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Converted Output</label>
-      <textarea id="outputText" class="output-textarea" placeholder="Converted text will appear here..." readonly></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Case Format Guide</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li><strong>UPPERCASE:</strong> ALL WORDS IN CAPITALS</li>
-        <li><strong>lowercase:</strong> all words in small letters</li>
-        <li><strong>Title Case:</strong> First Letter Of Each Word Capitalized</li>
-        <li><strong>camelCase:</strong> firstWordSmall, secondWordCapitalized</li>
-        <li><strong>PascalCase:</strong> EachWordCapitalizedIncludingFirst</li>
-        <li><strong>snake_case:</strong> words_separated_by_underscores</li>
-        <li><strong>kebab-case:</strong> words-separated-by-hyphens</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-formatting">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>📝 Formatting Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="./case.html" title="Case Converter"><strong>Case Converter</strong></a></li>
-          </ul>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Case Converter</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Convert text between uppercase, lowercase, title case, sentence case, and more. Perfect for formatting content, fixing text case issues, and preparing content for different purposes.</p>
+      </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📝 Input Text</label>
+          <textarea id="inputText" placeholder="Enter text to convert..." class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
-            <li><a href="./uuid.html" title="UUID Generator">UUID Generator</a></li>
-            <li><a href="./md5.html" title="MD5 Generator">MD5 Generator</a></li>
-          </ul>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+          <button onclick="toUpperCase()" class="px-3 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">UPPER</button>
+          <button onclick="toLowerCase()" class="px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">lower</button>
+          <button onclick="toTitleCase()" class="px-3 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">Title</button>
+          <button onclick="toSentenceCase()" class="px-3 py-2 bg-gradient-to-r from-lime-500 to-lime-600 hover:from-lime-600 hover:to-lime-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">Sentence</button>
+          <button onclick="copyOutput()" class="px-3 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋 Copy</button>
+          <button onclick="clearAll()" class="px-3 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium text-sm rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️ Clear</button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📤 Output</label>
+          <textarea id="outputText" placeholder="Converted text..." readonly class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-amber-800 dark:text-amber-300 text-sm">
+            <li>✓ UPPERCASE: All letters become capitals</li>
+            <li>✓ lowercase: All letters become small</li>
+            <li>✓ Title Case: First Letter Of Each Word</li>
+            <li>✓ Sentence case: First letter capitalized</li>
+            <li>✓ Perfect for content formatting</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>📚 Easy Case Conversion</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔄 Conversion</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-amber-500 transition">← Home</a></li><li><a href="./case.html" class="font-bold text-slate-900 dark:text-slate-50">Case</a></li><li><a href="./binary.html" class="hover:text-amber-500 transition">Binary</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-amber-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-amber-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-amber-500 transition">JSON</a></li><li><a href="./base64.html" class="hover:text-amber-500 transition">Base64</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-amber-500 transition">Privacy</a></li><li><a href="/" class="hover:text-amber-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-amber-500 hover:text-amber-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    function handleConvert(caseType) {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter text to convert', 'error');
-          return;
-        }
-        
-        let result;
-        switch(caseType) {
-          case 'upper':
-            result = toUpperCase(input);
-            break;
-          case 'lower':
-            result = toLowerCase(input);
-            break;
-          case 'title':
-            result = toTitleCase(input);
-            break;
-          case 'camel':
-            result = toCamelCase(input);
-            break;
-          case 'pascal':
-            result = toPascalCase(input);
-            break;
-          case 'snake':
-            result = toSnakeCase(input);
-            break;
-          case 'kebab':
-            result = toKebabCase(input);
-            break;
-          default:
-            result = input;
-        }
-        
-        document.getElementById('outputText').value = result;
-        showFeedback('Text converted!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById('outputText').value;
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Nothing to copy', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('outputText').value = '';
-      showFeedback('Cleared!');
-    }
+    function toUpperCase() { const input = document.getElementById('inputText').value; document.getElementById('outputText').value = input.toUpperCase(); }
+    function toLowerCase() { const input = document.getElementById('inputText').value; document.getElementById('outputText').value = input.toLowerCase(); }
+    function toTitleCase() { const input = document.getElementById('inputText').value; const result = input.replace(/\b\w/g, (c) => c.toUpperCase()); document.getElementById('outputText').value = result; }
+    function toSentenceCase() { const input = document.getElementById('inputText').value; const result = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase(); document.getElementById('outputText').value = result; }
+    function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('No output'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('inputText').value = ''; document.getElementById('outputText').value = ''; }
   </script>
 </body>
 </html>

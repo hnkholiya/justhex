@@ -1,178 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free UUID Generator Online | Generate Unique UUIDs Instantly</title>
-  <meta name="description" content="Fast and free UUID v4 generator. Generate unique identifiers instantly for databases, APIs, and applications. No signup required. Supports bulk generation.">
-  <meta name="keywords" content="uuid generator, uuid v4, guid generator, unique identifier, random id">
+  <title>Free UUID Generator Online | JustHex</title>
+  <meta name="description" content="Generate unique UUIDs (v4) instantly. Create random identifiers for databases, APIs, and applications.">
+  <meta name="keywords" content="uuid generator, uuid v4, unique identifier, guid generator">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>UUID Generator</h1>
-      <p class="tool-description-text">
-        Generate unique UUIDs (Universally Unique Identifiers) instantly. 
-        UUID v4 creates random unique identifiers perfect for databases, APIs, applications, and distributed systems. 
-        Each UUID is globally unique with an extremely low probability of collision. 
-        Essential for generating unique database IDs, session tokens, and tracking identifiers.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Settings Section -->
-    <div class="tool-section">
-      <label class="tool-label">Generate Options</label>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
-        <div>
-          <label style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">Quantity</label>
-          <input type="number" id="uuidCount" min="1" max="100" value="1" class="input-textarea" style="min-height: auto; padding: var(--spacing-md);">
-        </div>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">UUID Generator</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Generate unique UUIDs (Universally Unique Identifiers) instantly. Create random v4 UUIDs for databases, APIs, applications, and distributed systems. Instantly generate multiple UUIDs.</p>
       </div>
-    </div>
-
-    <!-- Buttons -->
-    <div class="tool-controls">
-      <button class="btn-action btn-generate" onclick="handleGenerateUUID()">🆔 Generate UUID</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy All</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Generated UUIDs</label>
-      <textarea id="outputText" class="output-textarea" placeholder="Your UUIDs will appear here..." readonly></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 UUID Quick Facts</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>UUID (Universally Unique Identifier) - 128-bit standard format</li>
-        <li>UUID v4 uses random numbers - cryptographically strong</li>
-        <li>Format: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx (36 characters)</li>
-        <li>Probability of collision is virtually zero</li>
-        <li>Perfect for database primary keys, API tokens, and distributed systems</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-generation">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>🔓 Generator Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./password.html" title="Password Generator">Password Generator</a></li>
-            <li><a href="./uuid.html" title="UUID Generator"><strong>UUID Generator</strong></a></li>
-          </ul>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">🔢 How many UUIDs?</label>
+          <input id="count" type="number" min="1" max="100" value="1" class="w-full p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-indigo-500 focus:outline-none"/>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
-            <li><a href="./json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="./sha256.html" title="SHA256 Hash">SHA256 Hash</a></li>
-          </ul>
+        <button onclick="generateUUIDs()" class="w-full px-4 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-bold rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">✨ Generate UUID(s)</button>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">🆔 Generated UUIDs</label>
+          <textarea id="outputText" placeholder="UUIDs will appear here..." readonly class="w-full h-40 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none font-mono text-sm"></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="grid grid-cols-2 gap-3">
+          <button onclick="copyOutput()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition">📋 Copy</button>
+          <button onclick="clearAll()" class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition">🗑️ Clear</button>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-indigo-900 dark:text-indigo-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-indigo-800 dark:text-indigo-300 text-sm">
+            <li>✓ UUID = Universally Unique Identifier</li>
+            <li>✓ 128-bit identifier in 36-character format</li>
+            <li>✓ Virtually impossible to have duplicates</li>
+            <li>✓ Perfect for database primary keys</li>
+            <li>✓ Extremely useful in distributed systems</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>🌟 Universal UUID Generator</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔐 Generators</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-indigo-500 transition">← Home</a></li><li><a href="./password.html" class="hover:text-indigo-500 transition">Password</a></li><li><a href="./uuid.html" class="font-bold text-slate-900 dark:text-slate-50">UUID</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-indigo-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-indigo-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-indigo-500 transition">JSON</a></li><li><a href="./base64.html" class="hover:text-indigo-500 transition">Base64</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-indigo-500 transition">Privacy</a></li><li><a href="/" class="hover:text-indigo-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    function handleGenerateUUID() {
-      try {
-        const count = parseInt(document.getElementById('uuidCount').value) || 1;
-        
-        if (count < 1 || count > 100) {
-          showFeedback('Can generate 1-100 UUIDs at a time', 'error');
-          return;
-        }
-        
-        let uuids = [];
-        for (let i = 0; i < count; i++) {
-          uuids.push(generateUUID());
-        }
-        
-        document.getElementById('outputText').value = uuids.join('\n');
-        showFeedback(`Generated ${count} UUID(s) successfully!`);
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById('outputText').value;
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Generate UUIDs first', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('outputText').value = '';
-      showFeedback('Cleared!');
-    }
+    function generateUUID() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => { const r = Math.random() * 16 | 0; const v = c === 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); }); }
+    function generateUUIDs() { const count = parseInt(document.getElementById('count').value) || 1; let uuids = ''; for (let i = 0; i < count; i++) uuids += generateUUID() + '\n'; document.getElementById('outputText').value = uuids.trim(); }
+    function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('Generate UUIDs first'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('outputText').value = ''; document.getElementById('count').value = '1'; }
   </script>
 </body>
 </html>

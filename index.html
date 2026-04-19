@@ -1,230 +1,437 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- google search console -->
-   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
   
   <!-- SEO Meta Tags -->
   <title>JustHex - Free Online Developer Tools | Base64, SHA256, JSON Formatter & More</title>
-  <meta name="description" content="JustHex provides free online developer tools including Base64 encoder/decoder, SHA256 generator, MD5 hash, JSON formatter, URL encoder, password generator, UUID, binary converter and timestamp converter. Fast, secure, and no signup required.">
-  <meta name="keywords" content="developer tools, base64 encoder, sha256 generator, md5 hash, json formatter, url encoder, password generator, uuid generator, timestamp converter, free online tools">
+  <meta name="description" content="JustHex is a free online developer tools platform featuring Base64 encoder/decoder, SHA256 generator, MD5 hash, JSON formatter, URL encoder, password generator, UUID generator, binary converter and timestamp converter. Fast, secure, private processing - no signup required.">
+  <meta name="keywords" content="developer tools, base64 encoder, sha256 generator, md5 hash, json formatter, url encoder, password generator, uuid generator, timestamp converter, binary converter, case converter, free online tools">
   <meta name="author" content="JustHex">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light dark">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="JustHex - Free Developer Tools Platform">
-  <meta property="og:description" content="100% free online developer tools. No login, no ads, no limits. Encode, decode, hash, format and convert instantly.">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://justhex.com/" />
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://justhex.com">
+  <meta property="og:url" content="https://justhex.com/">
+  <meta property="og:title" content="JustHex - Free Developer Tools Platform">
+  <meta property="og:description" content="100% free online developer tools. Encode, decode, hash, format and convert instantly. No login, no ads, no limits.">
+  <meta property="og:image" content="https://justhex.com/og-image.png">
+  <meta property="og:site_name" content="JustHex">
   
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://justhex.com/">
+  <meta property="twitter:title" content="JustHex - Free Developer Tools Platform">
+  <meta property="twitter:description" content="100% free online developer tools. Encode, decode, hash, format and convert instantly.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'selector',
+      theme: {
+        extend: {}
+      }
+    }
+  </script>
+  
+  <!-- Custom Styles for Animations -->
+  <style>
+    .faq-answer {
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+    
+    .faq-toggle {
+      transition: transform 0.3s ease-out;
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .tool-card {
+      animation: fadeInDown 0.3s ease-out;
+    }
+    
+    /* Smooth color transitions for dark mode */
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-300">
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity">
+          <span class="text-2xl">⚙️</span>
+          <span class="text-slate-900 dark:text-white">JustHex</span>
         </a>
         
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Search Box -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+          <div class="relative w-full">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
             <input 
               type="text" 
               id="searchInput" 
-              class="search-input" 
+              class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
               placeholder="Search tools..."
               aria-label="Search developer tools"
             >
           </div>
         </div>
         
-        <div class="navbar-right">
-          <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        </div>
+        <!-- Theme Toggle -->
+        <button class="theme-toggle p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle dark mode">
+          <span class="text-xl">🌙</span>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="container section">
-    <div class="hero">
-      <h1>All-in-One Developer Tools</h1>
-      <p class="hero-subtitle">
+  <section class="max-w-7xl mx-auto px-4 py-16 md:py-24">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 dark:text-white">
+        All-in-One Developer Tools
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
         Free online tools for encoding, decoding, hashing, and formatting. 
-        No login, no ads, lightning-fast performance.
+        No login, no ads, lightning-fast performance. Get instant results for all your development needs.
       </p>
-      <div class="hero-badges">
-        <span class="badge">✓ 100% Free</span>
-        <span class="badge">✓ No Sign-up</span>
-        <span class="badge">✓ Open Source</span>
-        <span class="badge">✓ Fast & Secure</span>
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <span class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-full text-sm font-medium">✓ 100% Free</span>
+        <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-100 rounded-full text-sm font-medium">✓ No Sign-up</span>
+        <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-100 rounded-full text-sm font-medium">✓ Open Source</span>
+        <span class="px-4 py-2 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-100 rounded-full text-sm font-medium">✓ Fast & Secure</span>
       </div>
     </div>
   </section>
 
+  <!-- AD SPACE: HEADER BANNER -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <div class="ad-space bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-8 text-center transition-colors" id="ad-header">
+      <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Advertisement</div>
+      <p class="text-slate-600 dark:text-slate-400">Premium ad space - Contact for partnerships</p>
+    </div>
+  </section>
+
   <!-- Tools Grid -->
-  <section class="container section-sm">
-    <div class="section-header">
-      <h2>Developer Tools</h2>
-      <p class="section-subtitle">Explore our collection of powerful, free tools designed for developers</p>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Developer Tools</h2>
+      <p class="text-lg text-slate-600 dark:text-slate-400">Explore our collection of powerful, free tools designed for developers</p>
+    </div>
+
+    <!-- Why Choose JustHex -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-center mb-8 text-slate-900 dark:text-white">Why Choose JustHex?</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 transition-colors">
+          <div class="text-4xl mb-4">⚡</div>
+          <div class="font-bold text-slate-900 dark:text-white mb-2">Lightning Fast</div>
+          <div class="text-slate-600 dark:text-slate-400 text-sm">All processing happens in your browser - no server delays</div>
+        </div>
+        <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 transition-colors">
+          <div class="text-4xl mb-4">🔒</div>
+          <div class="font-bold text-slate-900 dark:text-white mb-2">Completely Secure</div>
+          <div class="text-slate-600 dark:text-slate-400 text-sm">Your data never leaves your browser. 100% private processing</div>
+        </div>
+        <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 transition-colors">
+          <div class="text-4xl mb-4">🎯</div>
+          <div class="font-bold text-slate-900 dark:text-white mb-2">Easy to Use</div>
+          <div class="text-slate-600 dark:text-slate-400 text-sm">Simple, clean interface with instant results</div>
+        </div>
+        <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 transition-colors">
+          <div class="text-4xl mb-4">∞</div>
+          <div class="font-bold text-slate-900 dark:text-white mb-2">No Limits</div>
+          <div class="text-slate-600 dark:text-slate-400 text-sm">Unlimited usage, no rate limiting or quotas</div>
+        </div>
+      </div>
     </div>
     
-    <div class="tools-grid">
+    <!-- Tools Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <!-- 1. Base64 -->
-      <a href="tools/base64.html" class="tool-card">
-        <div class="tool-icon">📝</div>
-        <h3 class="tool-name">Base64 Encoder</h3>
-        <p class="tool-description">Encode and decode Base64 text instantly. Perfect for APIs, authentication tokens, and data transmission.</p>
-        <div class="tool-meta">
+      <a href="tools/base64.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">📝</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Base64 Encoder</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Encode and decode Base64 text instantly. Perfect for APIs, authentication tokens, and data transmission.</p>
+        <div class="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-100 text-xs rounded-full">
           <span class="tool-category">Encoding</span>
         </div>
       </a>
 
       <!-- 2. SHA256 -->
-      <a href="tools/sha256.html" class="tool-card">
-        <div class="tool-icon">🔐</div>
-        <h3 class="tool-name">SHA256 Hash</h3>
-        <p class="tool-description">Generate SHA256 hashes for passwords, encryption, and data integrity verification. Industry-standard hashing.</p>
-        <div class="tool-meta">
+      <a href="tools/sha256.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">🔐</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">SHA256 Hash</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Generate SHA256 hashes for passwords, encryption, and data integrity verification. Industry-standard hashing.</p>
+        <div class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-100 text-xs rounded-full">
           <span class="tool-category">Hashing</span>
         </div>
       </a>
 
       <!-- 3. MD5 -->
-      <a href="tools/md5.html" class="tool-card">
-        <div class="tool-icon">🔑</div>
-        <h3 class="tool-name">MD5 Generator</h3>
-        <p class="tool-description">Create MD5 hashes for checksum validation and quick hashing needs. Fast and reliable.</p>
-        <div class="tool-meta">
+      <a href="tools/md5.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">🔑</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">MD5 Generator</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Create MD5 hashes for checksum validation and quick hashing needs. Fast and reliable.</p>
+        <div class="inline-block px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 text-xs rounded-full">
           <span class="tool-category">Hashing</span>
         </div>
       </a>
 
       <!-- 4. JSON -->
-      <a href="tools/json.html" class="tool-card">
-        <div class="tool-icon">{ }</div>
-        <h3 class="tool-name">JSON Formatter</h3>
-        <p class="tool-description">Format, beautify, and validate JSON data. Debug APIs and improve code readability instantly.</p>
-        <div class="tool-meta">
+      <a href="tools/json.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">{ }</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">JSON Formatter</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Format, beautify, and validate JSON data. Debug APIs and improve code readability instantly.</p>
+        <div class="inline-block px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-100 text-xs rounded-full">
           <span class="tool-category">Formatting</span>
         </div>
       </a>
 
       <!-- 5. URL -->
-      <a href="tools/url.html" class="tool-card">
-        <div class="tool-icon">🌐</div>
-        <h3 class="tool-name">URL Encoder</h3>
-        <p class="tool-description">Encode and decode URLs safely for web transmission. Handle special characters in parameters.</p>
-        <div class="tool-meta">
+      <a href="tools/url.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">🌐</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">URL Encoder</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Encode and decode URLs safely for web transmission. Handle special characters in parameters.</p>
+        <div class="inline-block px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-100 text-xs rounded-full">
           <span class="tool-category">Encoding</span>
         </div>
       </a>
 
       <!-- 6. Password -->
-      <a href="tools/password.html" class="tool-card">
-        <div class="tool-icon">🔒</div>
-        <h3 class="tool-name">Password Generator</h3>
-        <p class="tool-description">Generate strong, secure passwords instantly. Customizable length and character types.</p>
-        <div class="tool-meta">
+      <a href="tools/password.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">🔒</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Password Generator</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Generate strong, secure passwords instantly. Customizable length and character types.</p>
+        <div class="inline-block px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 text-xs rounded-full">
           <span class="tool-category">Security</span>
         </div>
       </a>
 
       <!-- 7. UUID -->
-      <a href="tools/uuid.html" class="tool-card">
-        <div class="tool-icon">🆔</div>
-        <h3 class="tool-name">UUID Generator</h3>
-        <p class="tool-description">Create unique UUIDs for databases, APIs, and applications. Instant generation of v4 UUIDs.</p>
-        <div class="tool-meta">
+      <a href="tools/uuid.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">🆔</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">UUID Generator</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Create unique UUIDs for databases, APIs, and applications. Instant generation of v4 UUIDs.</p>
+        <div class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-100 text-xs rounded-full">
           <span class="tool-category">Generators</span>
         </div>
       </a>
 
       <!-- 8. Binary -->
-      <a href="tools/binary.html" class="tool-card">
-        <div class="tool-icon">010</div>
-        <h3 class="tool-name">Binary Converter</h3>
-        <p class="tool-description">Convert text to binary and back. Perfect for learning binary systems and debugging encoding.</p>
-        <div class="tool-meta">
+      <a href="tools/binary.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">010</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Binary Converter</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Convert text to binary and back. Perfect for learning binary systems and debugging encoding.</p>
+        <div class="inline-block px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-100 text-xs rounded-full">
           <span class="tool-category">Conversion</span>
         </div>
       </a>
 
       <!-- 9. Case -->
-      <a href="tools/case.html" class="tool-card">
-        <div class="tool-icon">Aa</div>
-        <h3 class="tool-name">Case Converter</h3>
-        <p class="tool-description">Convert text between uppercase, lowercase, title case, and more. Perfect for formatting content.</p>
-        <div class="tool-meta">
+      <a href="tools/case.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">Aa</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Case Converter</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Convert text between uppercase, lowercase, title case, and more. Perfect for formatting content.</p>
+        <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-100 text-xs rounded-full">
           <span class="tool-category">Formatting</span>
         </div>
       </a>
 
       <!-- 10. Timestamp -->
-      <a href="tools/timestamp.html" class="tool-card">
-        <div class="tool-icon">⏰</div>
-        <h3 class="tool-name">Timestamp Converter</h3>
-        <p class="tool-description">Convert UNIX timestamps to readable dates. Convert dates to timestamps for development and debugging.</p>
-        <div class="tool-meta">
+      <a href="tools/timestamp.html" class="tool-card p-6 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-950 transition-all hover:scale-105 duration-300">
+        <div class="text-4xl mb-4">⏰</div>
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Timestamp Converter</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Convert UNIX timestamps to readable dates. Convert dates to timestamps for development and debugging.</p>
+        <div class="inline-block px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-700 dark:text-teal-100 text-xs rounded-full">
           <span class="tool-category">Conversion</span>
         </div>
       </a>
     </div>
   </section>
 
+  <!-- AD SPACE: MIDDLE SECTION -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <div class="ad-space bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-8 text-center transition-colors" id="ad-middle">
+      <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Advertisement</div>
+      <p class="text-slate-600 dark:text-slate-400">Mid-page ad placement</p>
+    </div>
+  </section>
+
+  <!-- Stats/Trust Section -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-lg p-12 text-white">
+      <h2 class="text-3xl font-bold text-center mb-12">Trusted by Developers Worldwide</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <span class="text-5xl font-bold block mb-2">50K+</span>
+          <span class="text-lg opacity-90">Daily Users</span>
+        </div>
+        <div class="text-center">
+          <span class="text-5xl font-bold block mb-2">10</span>
+          <span class="text-lg opacity-90">Powerful Tools</span>
+        </div>
+        <div class="text-center">
+          <span class="text-5xl font-bold block mb-2">100%</span>
+          <span class="text-lg opacity-90">Free Forever</span>
+        </div>
+        <div class="text-center">
+          <span class="text-5xl font-bold block mb-2">0ms</span>
+          <span class="text-lg opacity-90">Processing Time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <!-- AD SPACE: BOTTOM TOOLS -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <div class="ad-space bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-8 text-center transition-colors" id="ad-tools-bottom">
+      <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2">Advertisement</div>
+      <p class="text-slate-600 dark:text-slate-400">Premium placement available</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="faq-section">
+      <h3 class="text-3xl font-bold text-center mb-8 text-slate-900 dark:text-white">Frequently Asked Questions</h3>
+      <div class="space-y-4">
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">Is JustHex really free?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">Yes! 100% free, forever. No hidden charges, no premium tiers, no login required. All tools are completely free to use.</div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">Is my data private and secure?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">Absolutely. All processing happens in your browser using JavaScript. No data is sent to our servers. Your privacy is completely protected.</div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">Do I need to create an account?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">No signup required. You can start using tools immediately. Just visit, choose a tool, and go!</div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">What tools do you offer?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">We offer 10 essential tools: Base64 Encoder, SHA256 Hash, MD5 Hash, JSON Formatter, URL Encoder, Password Generator, UUID Generator, Binary Converter, Case Converter, and Timestamp Converter.</div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">Can I use these tools offline?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">Yes! Since all processing happens in your browser, you can save the pages and use them offline (though you'll need internet to first access the site).</div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
+          <div class="faq-question p-4 bg-slate-50 dark:bg-slate-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex justify-between items-center">
+            <span class="font-bold text-slate-900 dark:text-white">How are you making money?</span>
+            <span class="faq-toggle text-slate-500 dark:text-slate-400 transition-transform">▼</span>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+            <div class="faq-answer-content p-4 text-slate-600 dark:text-slate-400">JustHex is supported by non-intrusive advertising. We're committed to keeping the tools free while maintaining the service.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Footer -->
-  <footer class="footer-home">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>About</h3>
-          <ul>
-            <li><a href="#" title="About JustHex">About JustHex</a></li>
-            <li><a href="#" title="Features">Features</a></li>
-            <li><a href="#" title="Blog">Blog</a></li>
-            <li><a href="#" title="Changelog">Changelog</a></li>
+  <footer class="bg-slate-900 dark:bg-slate-950 text-slate-100 dark:text-slate-300 border-t border-slate-800 dark:border-slate-700 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <h3 class="font-bold text-white mb-4">About</h3>
+          <ul class="space-y-2">
+            <li><a href="#" title="About JustHex" class="hover:text-white transition-colors">About JustHex</a></li>
+            <li><a href="#" title="Features" class="hover:text-white transition-colors">Features</a></li>
+            <li><a href="#" title="Blog" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#" title="Changelog" class="hover:text-white transition-colors">Changelog</a></li>
           </ul>
         </div>
-        <div class="footer-column">
-          <h3>Tools</h3>
-          <ul>
-            <li><a href="tools/base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
-            <li><a href="tools/json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="tools/password.html" title="Password Generator">Password Generator</a></li>
-            <li><a href="tools/uuid.html" title="UUID Generator">UUID Generator</a></li>
+        <div>
+          <h3 class="font-bold text-white mb-4">Tools</h3>
+          <ul class="space-y-2">
+            <li><a href="tools/base64.html" title="Base64 Encoder" class="hover:text-white transition-colors">Base64 Encoder</a></li>
+            <li><a href="tools/json.html" title="JSON Formatter" class="hover:text-white transition-colors">JSON Formatter</a></li>
+            <li><a href="tools/password.html" title="Password Generator" class="hover:text-white transition-colors">Password Generator</a></li>
+            <li><a href="tools/uuid.html" title="UUID Generator" class="hover:text-white transition-colors">UUID Generator</a></li>
           </ul>
         </div>
-        <div class="footer-column">
-          <h3>Legal</h3>
-          <ul>
-            <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
-            <li><a href="#" title="Terms of Service">Terms of Service</a></li>
-            <li><a href="sitemap.xml" title="Sitemap">Sitemap</a></li>
-            <li><a href="robots.txt" title="Robots.txt">Robots.txt</a></li>
+        <div>
+          <h3 class="font-bold text-white mb-4">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="#" title="Privacy Policy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" title="Terms of Service" class="hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="sitemap.xml" title="Sitemap" class="hover:text-white transition-colors">Sitemap</a></li>
+            <li><a href="robots.txt" title="Robots.txt" class="hover:text-white transition-colors">Robots.txt</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>🌟 JustHex - Free Developer Tools</p>
-          <p>Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
+      
+      <div class="border-t border-slate-800 dark:border-slate-700 pt-8">
+        <div class="text-center mb-6">
+          <p class="text-lg font-bold text-white mb-2">🌟 JustHex - Free Developer Tools</p>
+          <p class="mb-2">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors">Harshil Kholiya</a></p>
           <p>&copy; 2026 JustHex. All rights reserved. | Open Source</p>
         </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">💼</a>
+        
+        <div class="flex justify-center gap-6">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" class="text-2xl hover:opacity-70 transition-opacity">🐙</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter" class="text-2xl hover:opacity-70 transition-opacity">𝕏</a>
+          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn" class="text-2xl hover:opacity-70 transition-opacity">💼</a>
         </div>
       </div>
     </div>

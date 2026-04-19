@@ -1,46 +1,75 @@
 /**
  * JustHex - Main Application Logic
- * Dark mode, search, and utility functions
+ * Dark mode, search, FAQ, and utility functions
  */
 
 // ==========================================
-// DARK MODE MANAGEMENT
+// DARK MODE MANAGEMENT (Tailwind Compatible)
 // ==========================================
 
 function initializeTheme() {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  setTheme(savedTheme);
-}
-
-function setTheme(theme) {
+  const savedTheme = localStorage.getItem('theme');
   const html = document.documentElement;
-  html.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
+  
+  // If no saved theme, check system preference
+  if (!savedTheme) {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      html.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  } else {
+    // Apply saved theme
+    if (savedTheme === 'dark') {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+  }
+  
   updateThemeToggle();
 }
 
 function toggleTheme() {
   const html = document.documentElement;
-  const currentTheme = html.getAttribute('data-theme') || 'light';
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  setTheme(newTheme);
+  const isDark = html.classList.contains('dark');
+  
+  if (isDark) {
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+  
+  updateThemeToggle();
 }
 
 function updateThemeToggle() {
   const btn = document.querySelector('.theme-toggle');
   if (btn) {
-    const theme = document.documentElement.getAttribute('data-theme');
-    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    const isDark = document.documentElement.classList.contains('dark');
+    btn.innerHTML = isDark ? '☀️' : '🌙';
   }
 }
 
-// Theme toggle button
+// Initialize theme on page load
 document.addEventListener('DOMContentLoaded', () => {
   initializeTheme();
   
   const themeToggle = document.querySelector('.theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
+  }
+});
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    initializeTheme();
   }
 });
 
@@ -55,6 +84,7 @@ function initializeSearch() {
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const toolCards = document.querySelectorAll('.tool-card');
+    let visibleCount = 0;
     
     toolCards.forEach(card => {
       const name = card.querySelector('.tool-name')?.textContent.toLowerCase() || '';
@@ -65,13 +95,70 @@ function initializeSearch() {
                      description.includes(query) || 
                      category.includes(query);
       
-      card.style.display = matches ? 'block' : 'none';
+      if (matches) {
+        card.style.display = 'block';
+        card.style.animation = 'fadeInDown 0.3s ease-out';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
     });
+    
+    // Show no results message if needed
+    if (visibleCount === 0 && query.length > 0) {
+      showFeedback('No tools found matching "' + query + '"', 'info');
+    }
   });
 }
 
 document.addEventListener('DOMContentLoaded', initializeSearch);
 
+// ==========================================
+// FAQ ACCORDION FUNCTIONALITY
+// ==========================================
+
+function initializeFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    if (!question || !answer) return;
+    
+    question.addEventListener('click', () => {
+      const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+      
+      // Close all other FAQs
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          const otherToggle = otherItem.querySelector('.faq-toggle');
+          if (otherAnswer) {
+            otherAnswer.style.maxHeight = '0px';
+            otherAnswer.style.opacity = '0';
+            otherToggle.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+      
+      // Toggle current FAQ
+      const toggle = item.querySelector('.faq-toggle');
+      if (isOpen) {
+        answer.style.maxHeight = '0px';
+        answer.style.opacity = '0';
+        toggle.style.transform = 'rotate(0deg)';
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.opacity = '1';
+        toggle.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initializeFAQ);
+      
 // ==========================================
 // COPY TO CLIPBOARD
 // ==========================================
@@ -83,7 +170,7 @@ function copyToClipboard(text, source = null) {
   }
   
   navigator.clipboard.writeText(text).then(() => {
-    showFeedback('Copied to clipboard!', 'success');
+    showFeedback('✓ Copied to clipboard!', 'success');
   }).catch(() => {
     // Fallback for older browsers
     const textarea = document.createElement('textarea');
@@ -92,7 +179,7 @@ function copyToClipboard(text, source = null) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    showFeedback('Copied to clipboard!', 'success');
+    showFeedback('✓ Copied to clipboard!', 'success');
   });
 }
 
@@ -108,13 +195,23 @@ function showFeedback(message, type = 'success') {
   const feedback = document.createElement('div');
   feedback.className = 'copy-feedback';
   feedback.textContent = message;
-  feedback.style.backgroundColor = type === 'error' ? 'var(--color-error)' : 'var(--color-success)';
+  
+  const colorMap = {
+    'error': '#dc2626',
+    'warning': '#f97316',
+    'info': '#0284c7',
+    'success': '#16a34a'
+  };
+  
+  feedback.style.backgroundColor = colorMap[type] || colorMap['success'];
   
   document.body.appendChild(feedback);
   
   setTimeout(() => {
-    feedback.remove();
-  }, 3000);
+    feedback.style.opacity = '0';
+    feedback.style.transition = 'opacity 0.3s ease-out';
+    setTimeout(() => feedback.remove(), 300);
+  }, 2500);
 }
 
 // ==========================================
@@ -139,6 +236,34 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+}
+
+// Copy output textarea helper
+function copyOutput() {
+  const outputTextarea = document.getElementById('outputText');
+  if (!outputTextarea) {
+    showFeedback('Output not found', 'error');
+    return;
+  }
+  
+  const text = outputTextarea.value.trim();
+  if (!text) {
+    showFeedback('Nothing to copy', 'error');
+    return;
+  }
+  
+  copyToClipboard(text);
+}
+
+// Clear all fields helper
+function clearAll() {
+  const inputTextarea = document.getElementById('inputText');
+  const outputTextarea = document.getElementById('outputText');
+  
+  if (inputTextarea) inputTextarea.value = '';
+  if (outputTextarea) outputTextarea.value = '';
+  
+  showFeedback('Cleared all fields', 'info');
 }
 
 // ==========================================
@@ -172,6 +297,7 @@ if ('IntersectionObserver' in window) {
         const img = entry.target;
         if (img.dataset.src) {
           img.src = img.dataset.src;
+          img.removeAttribute('data-src');
           observer.unobserve(img);
         }
       }
@@ -182,3 +308,30 @@ if ('IntersectionObserver' in window) {
     imageObserver.observe(img);
   });
 }
+
+// ==========================================
+// PAGE LOAD ANIMATIONS
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Add fade-in animation to page
+  document.body.style.animation = 'fadeInUp 0.5s ease-out';
+});
+
+// ==========================================
+// KEYBOARD SHORTCUTS
+// ==========================================
+
+document.addEventListener('keydown', (e) => {
+  // Ctrl+Shift+C to copy output
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+    e.preventDefault();
+    copyOutput();
+  }
+  
+  // Ctrl+Shift+X to clear all
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'X') {
+    e.preventDefault();
+    clearAll();
+  }
+});

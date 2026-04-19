@@ -1,184 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
-  <!-- SEO Meta Tags -->
-  <title>Free Binary Converter Online | Text to Binary & Binary to Text</title>
-  <meta name="description" content="Fast and free binary converter. Convert text to binary format and binary back to text instantly. Perfect for learning binary systems and debugging encoding. No signup required.">
-  <meta name="keywords" content="binary converter, text to binary, binary to text, binary code, binary translator">
+  <title>Free Binary Converter | Text to Binary & Back | JustHex</title>
+  <meta name="description" content="Convert text to binary and binary to text instantly. Learn binary systems and debug encoding issues.">
+  <meta name="keywords" content="binary converter, text to binary, binary to text, binary translator">
   <meta name="author" content="JustHex">
-  
-  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'selector' }</script>
+  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <a href="/" class="logo">
-          <span class="logo-icon">⚙️</span>
-          <span>JustHex</span>
-        </a>
-        
-        <div class="navbar-center">
-          <div class="search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search tools...">
-          </div>
-        </div>
-        
-        <div class="navbar-right">
-          <button class="theme-toggle">🌙</button>
-        </div>
-      </div>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
+  <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl"><span>⚙️</span><span>JustHex</span></a>
+      <button class="theme-toggle p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition">🌙</button>
     </div>
   </nav>
-
-  <!-- Tool Header -->
-  <section class="container section-sm">
-    <div class="tool-page-header">
-      <h1>Binary Converter</h1>
-      <p class="tool-description-text">
-        Convert text to binary format and binary back to text instantly. 
-        Binary (base-2) is the fundamental language of computers, using only 0s and 1s. 
-        Perfect for learning binary systems, debugging encoding issues, understanding how computers store data, and educational purposes. 
-        Each character is converted to its 8-bit binary representation.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tool Container -->
-  <section class="container tool-container section-sm">
-    <!-- Input Section -->
-    <div class="tool-section">
-      <label class="tool-label">Text Input</label>
-      <textarea id="inputText" class="input-textarea" placeholder="Enter text to convert to binary..."></textarea>
-    </div>
-
-    <!-- Buttons -->
-    <div class="tool-controls">
-      <button class="btn-action btn-convert" onclick="handleTextToBinary()">🔄 Text to Binary</button>
-      <button class="btn-action btn-convert" onclick="handleBinaryToText()">🔄 Binary to Text</button>
-      <button class="btn-action btn-copy" onclick="copyOutput()">📋 Copy Output</button>
-      <button class="btn-action btn-clear" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
-
-    <!-- Output Section -->
-    <div class="tool-section" style="margin-top: var(--spacing-xl);">
-      <label class="tool-label">Binary Output</label>
-      <textarea id="outputText" class="output-textarea" placeholder="Binary representation will appear here..." readonly></textarea>
-    </div>
-
-    <!-- Helper Tips -->
-    <div class="helper-text">
-      <div class="helper-title">💡 Quick Tips</div>
-      <ul style="margin: 0; padding-left: 20px; color: var(--color-text-secondary);">
-        <li>Each character is represented as 8-bit binary (1 byte)</li>
-        <li>Binary digits are separated by spaces for readability</li>
-        <li>ASCII characters (0-127) use standard 8-bit encoding</li>
-        <li>Extended ASCII (128-255) for special characters</li>
-        <li>Use for understanding computer data representation and encoding</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer-conversion">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>⏰ Utility Tools</h3>
-          <ul>
-            <li><a href="/" title="Home">← Back to Home</a></li>
-            <li><a href="./timestamp.html" title="Timestamp Converter">Timestamp Converter</a></li>
-            <li><a href="./binary.html" title="Binary Converter"><strong>Binary Converter</strong></a></li>
-          </ul>
+  <main class="min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Binary Converter</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Convert text to binary and binary back to text instantly. Perfect for learning binary systems, debugging encoding, and understanding data representation at the bit level.</p>
+      </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Premium ad space available</p>
+      </div>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📝 Text Input</label>
+          <textarea id="inputText" placeholder="Enter text to convert to binary..." class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
         </div>
-        <div class="footer-column">
-          <h3>Other Tools</h3>
-          <ul>
-            <li><a href="./base64.html" title="Base64 Encoder">Base64 Encoder</a></li>
-            <li><a href="./json.html" title="JSON Formatter">JSON Formatter</a></li>
-            <li><a href="./sha256.html" title="SHA256 Hash">SHA256 Hash</a></li>
-          </ul>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button onclick="textToBinary()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">→ Binary</button>
+          <button onclick="binaryToText()" class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">← Text</button>
+          <button onclick="copyOutput()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋 Copy</button>
+          <button onclick="clearAll()" class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️ Clear</button>
         </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#" title="Documentation">Documentation</a></li>
-            <li><a href="#" title="Support">Support</a></li>
-            <li><a href="../sitemap.xml" title="Sitemap">Sitemap</a></li>
+        <div class="space-y-3">
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">010 Binary Output</label>
+          <textarea id="outputText" placeholder="Binary result..." readonly class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none font-mono text-sm placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+        </div>
+        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+          <div class="text-sm font-medium mb-2">Advertisement</div>
+          <p class="text-xs">Mid-section ad placement</p>
+        </div>
+        <div class="bg-pink-50 dark:bg-pink-900/20 border-l-4 border-pink-500 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-pink-900 dark:text-pink-200 mb-3">💡 Quick Tips</h3>
+          <ul class="space-y-2 text-pink-800 dark:text-pink-300 text-sm">
+            <li>✓ Each character converts to 8-bit binary</li>
+            <li>✓ 'A' = 01000001, 'a' = 01100001</li>
+            <li>✓ Binary uses only 0 and 1 digits</li>
+            <li>✓ Used to understand data at bit level</li>
+            <li>✓ All processing in browser - secure & fast</li>
           </ul>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <div class="footer-credit">
-          <p>📀 Quick Binary Conversion</p>
-          <p>Crafted with ❤️ by <a href="https://www.linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer">Harshil Kholiya</a></p>
-          <p>&copy; 2026 JustHex</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">𝕏</a>
-          <a href="https://linkedin.com/in/harshil-kholiya/" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
-        </div>
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div class="text-sm font-medium mb-2">Advertisement</div>
+        <p class="text-xs">Bottom placement</p>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><h3 class="font-bold mb-4">🔄 Conversion</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-pink-500 transition">← Home</a></li><li><a href="./binary.html" class="font-bold text-slate-900 dark:text-slate-50">Binary</a></li><li><a href="./case.html" class="hover:text-pink-500 transition">Case</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-pink-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-pink-500 transition">MD5</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-pink-500 transition">JSON</a></li><li><a href="./base64.html" class="hover:text-pink-500 transition">Base64</a></li></ul></div>
+        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-pink-500 transition">Privacy</a></li><li><a href="/" class="hover:text-pink-500 transition">Terms</a></li></ul></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-pink-500 hover:text-pink-600 transition">Harshil Kholiya</a></p>
+        <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/tools.js"></script>
   <script>
-    function handleTextToBinary() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter text to convert', 'error');
-          return;
-        }
-        const result = textToBinary(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('Converted to binary!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function handleBinaryToText() {
-      try {
-        const input = document.getElementById('inputText').value;
-        if (!input) {
-          showFeedback('Please enter binary to convert', 'error');
-          return;
-        }
-        const result = binaryToText(input);
-        document.getElementById('outputText').value = result;
-        showFeedback('Converted to text!');
-      } catch (error) {
-        showFeedback(error.message, 'error');
-      }
-    }
-
-    function copyOutput() {
-      const output = document.getElementById('outputText').value;
-      if (output) {
-        copyToClipboard(output);
-      } else {
-        showFeedback('Nothing to copy', 'error');
-      }
-    }
-
-    function clearAll() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('outputText').value = '';
-      showFeedback('Cleared!');
-    }
+    function textToBinary() { const input = document.getElementById('inputText').value; if (!input) { alert('Enter text'); return; } let binary = ''; for (let i = 0; i < input.length; i++) { binary += input[i].charCodeAt(0).toString(2).padStart(8, '0') + ' '; } document.getElementById('outputText').value = binary.trim(); }
+    function binaryToText() { try { const input = document.getElementById('inputText').value.trim(); if (!input) { alert('Enter binary'); return; } const bytes = input.split(' '); let text = ''; for (let byte of bytes) { text += String.fromCharCode(parseInt(byte, 2)); } document.getElementById('outputText').value = text; } catch(e) { alert('Invalid binary format'); } }
+    function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('No output'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
+    function clearAll() { document.getElementById('inputText').value = ''; document.getElementById('outputText').value = ''; }
   </script>
 </body>
 </html>
