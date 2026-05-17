@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="0nDPYpKBwDhohH_c4gVX91KmTTKlsVJul2nF8h0Ptcw" />
   <title>Free Binary Converter | Text to Binary & Back | JustHex</title>
-  <meta name="description" content="Convert text to binary and binary to text instantly. Learn binary systems and debug encoding issues.">
+  <meta name="description"
+    content="Convert text to binary and binary to text instantly. Learn binary systems and debug encoding issues.">
   <meta name="keywords" content="binary converter, text to binary, binary to text, binary translator">
   <meta name="author" content="JustHex">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'selector' }</script>
-  <style>[data-theme="dark"] { color-scheme: dark; } [data-theme="light"] { color-scheme: light; }</style>
+  <style>
+    [data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+    }
+  </style>
 </head>
+
 <body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
   <nav class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -23,28 +34,53 @@
     <div class="max-w-3xl mx-auto px-4 py-12">
       <div class="mb-12">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Binary Converter</h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Convert text to binary and binary back to text instantly. Perfect for learning binary systems, debugging encoding, and understanding data representation at the bit level.</p>
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Convert text to binary and binary back to
+          text instantly. Perfect for learning binary systems, debugging encoding, and understanding data representation
+          at the bit level.</p>
       </div>
-      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+      <div
+        class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mb-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
         <div class="text-sm font-medium mb-2">Advertisement</div>
-        <p class="text-xs">Premium ad space available</p>
+        <!-- <p class="text-xs">Premium ad space available</p> -->
+        <script>
+          atOptions = {
+            'key': '73c2eecece4b8456d10b2cb19cf9a8b4',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/73c2eecece4b8456d10b2cb19cf9a8b4/invoke.js"></script>
+
       </div>
       <div class="space-y-8">
         <div class="space-y-3">
           <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">📝 Text Input</label>
-          <textarea id="inputText" placeholder="Enter text to convert to binary..." class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+          <textarea id="inputText" placeholder="Enter text to convert to binary..."
+            class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-50 focus:border-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500 transition resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <button onclick="textToBinary()" class="px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">→ Binary</button>
-          <button onclick="binaryToText()" class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">← Text</button>
-          <button onclick="copyOutput()" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋 Copy</button>
-          <button onclick="clearAll()" class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️ Clear</button>
+          <button onclick="textToBinary()"
+            class="px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">→
+            Binary</button>
+          <button onclick="binaryToText()"
+            class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">←
+            Text</button>
+          <button onclick="copyOutput()"
+            class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">📋
+            Copy</button>
+          <button onclick="clearAll()"
+            class="px-4 py-2 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white font-medium rounded-xl transition transform hover:scale-105 active:scale-95 shadow-md">🗑️
+            Clear</button>
         </div>
         <div class="space-y-3">
           <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">010 Binary Output</label>
-          <textarea id="outputText" placeholder="Binary result..." readonly class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none font-mono text-sm placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+          <textarea id="outputText" placeholder="Binary result..." readonly
+            class="w-full h-24 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-50 resize-none font-mono text-sm placeholder-slate-400 dark:placeholder-slate-500"></textarea>
         </div>
-        <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+        <div
+          class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
           <div class="text-sm font-medium mb-2">Advertisement</div>
           <p class="text-xs">Mid-section ad placement</p>
         </div>
@@ -59,7 +95,8 @@
           </ul>
         </div>
       </div>
-      <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
+      <div
+        class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 mt-8 text-center text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700">
         <div class="text-sm font-medium mb-2">Advertisement</div>
         <p class="text-xs">Bottom placement</p>
       </div>
@@ -68,14 +105,41 @@
   <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16 py-12">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div><h3 class="font-bold mb-4">🔄 Conversion</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-pink-500 transition">← Home</a></li><li><a href="./binary.html" class="font-bold text-slate-900 dark:text-slate-50">Binary</a></li><li><a href="./case.html" class="hover:text-pink-500 transition">Case</a></li></ul></div>
-        <div><h3 class="font-bold mb-4">🔐 Hashing</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./sha256.html" class="hover:text-pink-500 transition">SHA256</a></li><li><a href="./md5.html" class="hover:text-pink-500 transition">MD5</a></li></ul></div>
-        <div><h3 class="font-bold mb-4">⚙️ Tools</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="./json.html" class="hover:text-pink-500 transition">JSON</a></li><li><a href="./base64.html" class="hover:text-pink-500 transition">Base64</a></li></ul></div>
-        <div><h3 class="font-bold mb-4">📜 Legal</h3><ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400"><li><a href="/" class="hover:text-pink-500 transition">Privacy</a></li><li><a href="/" class="hover:text-pink-500 transition">Terms</a></li></ul></div>
+        <div>
+          <h3 class="font-bold mb-4">🔄 Conversion</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="/" class="hover:text-pink-500 transition">← Home</a></li>
+            <li><a href="./binary.html" class="font-bold text-slate-900 dark:text-slate-50">Binary</a></li>
+            <li><a href="./case.html" class="hover:text-pink-500 transition">Case</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">🔐 Hashing</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="./sha256.html" class="hover:text-pink-500 transition">SHA256</a></li>
+            <li><a href="./md5.html" class="hover:text-pink-500 transition">MD5</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">⚙️ Tools</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="./json.html" class="hover:text-pink-500 transition">JSON</a></li>
+            <li><a href="./base64.html" class="hover:text-pink-500 transition">Base64</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">📜 Legal</h3>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="/" class="hover:text-pink-500 transition">Privacy</a></li>
+            <li><a href="/" class="hover:text-pink-500 transition">Terms</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+      <div
+        class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
         <p class="mb-2">🌟 JustHex - Free Developer Tools</p>
-        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-pink-500 hover:text-pink-600 transition">Harshil Kholiya</a></p>
+        <p class="mb-1">Crafted with ❤️ by <a href="https://hn-kholiya2.netlify.app/" target="_blank"
+            rel="noopener noreferrer" class="text-pink-500 hover:text-pink-600 transition">Harshil Kholiya</a></p>
         <p>&copy; 2026 JustHex. All rights reserved.</p>
       </div>
     </div>
@@ -83,15 +147,16 @@
   <script src="../js/main.js"></script>
   <script>
     function textToBinary() { const input = document.getElementById('inputText').value; if (!input) { alert('Enter text'); return; } let binary = ''; for (let i = 0; i < input.length; i++) { binary += input[i].charCodeAt(0).toString(2).padStart(8, '0') + ' '; } document.getElementById('outputText').value = binary.trim(); }
-    function binaryToText() { try { const input = document.getElementById('inputText').value.trim(); if (!input) { alert('Enter binary'); return; } const bytes = input.split(' '); let text = ''; for (let byte of bytes) { text += String.fromCharCode(parseInt(byte, 2)); } document.getElementById('outputText').value = text; } catch(e) { alert('Invalid binary format'); } }
+    function binaryToText() { try { const input = document.getElementById('inputText').value.trim(); if (!input) { alert('Enter binary'); return; } const bytes = input.split(' '); let text = ''; for (let byte of bytes) { text += String.fromCharCode(parseInt(byte, 2)); } document.getElementById('outputText').value = text; } catch (e) { alert('Invalid binary format'); } }
     function copyOutput() { const output = document.getElementById('outputText'); if (!output.value) { alert('No output'); return; } navigator.clipboard.writeText(output.value).then(() => alert('Copied!')).catch(() => alert('Failed')); }
     function clearAll() { document.getElementById('inputText').value = ''; document.getElementById('outputText').value = ''; }
   </script>
 
 
-<!-- monetag inpage-push ad -->
- <script>(function(s){s.dataset.zone='10897000',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <!-- monetag inpage-push ad -->
+  <script>(function (s) { s.dataset.zone = '10897000', s.src = 'https://nap5k.com/tag.min.js' })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
 
 </body>
+
 </html>
